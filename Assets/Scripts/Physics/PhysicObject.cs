@@ -1,4 +1,3 @@
-
 using UnityEngine;
 
 public class PhysicObject : MonoBehaviour
@@ -7,6 +6,7 @@ public class PhysicObject : MonoBehaviour
     private Vector3 _gravityAcceleration;
     private Vector3 _speed;
     private float _topCameraPoint;
+
     private void Awake()
     {
         _gravityAcceleration.y = _gravityScale;
