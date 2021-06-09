@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
+using DG.Tweening;
 public class Fruit : Block
 {
     private SpriteRenderer _spriteRenderer;
@@ -12,14 +10,16 @@ public class Fruit : Block
 
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        if (!_spriteRenderer.isVisible)
-        {
-            Destroy(this.gameObject);
-        }
-
+        base.Update();
         RotateBlock();
         ScaleBlock();
+    }
+
+    private void OnBecameInvisible()
+    {
+        Destroy(this.gameObject);
+        DOTween.Kill(transform);
     }
 }

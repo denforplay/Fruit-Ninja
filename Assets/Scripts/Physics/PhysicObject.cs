@@ -13,7 +13,7 @@ public class PhysicObject : MonoBehaviour
         _topCameraPoint = Camera.main.transform.position.y + Camera.main.orthographicSize;
     }
 
-    private void Update()
+    protected void Update()
     {
         MoveObject();
     }
@@ -27,7 +27,6 @@ public class PhysicObject : MonoBehaviour
 
         transform.position += _speed * Time.deltaTime;
         _speed -= _gravityAcceleration * Time.deltaTime;
-
     }
 
     public void AddSpeed(Vector3 speedToAddition)
