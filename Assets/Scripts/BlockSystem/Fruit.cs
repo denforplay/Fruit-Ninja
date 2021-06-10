@@ -9,17 +9,4 @@ public class Fruit : Block
         _spriteRenderer = GetComponent<SpriteRenderer>();
 
     }
-
-    private void Update()
-    {
-        base.Update();
-        RotateBlock();
-        ScaleBlock();
-    }
-
-    private void OnBecameInvisible()
-    {
-        Destroy(this.gameObject);
-        DOTween.Kill(transform);
-    }
 }

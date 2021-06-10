@@ -20,7 +20,7 @@ public class SpawnerLine : MonoBehaviour
         Vector3 spawnPosition = FindPointToDrop();
 
         Block droppingBlock = Instantiate(blockPrefab, spawnPosition, Quaternion.identity);
-
+        BlockManager._allBlocks.Add(droppingBlock);
         return droppingBlock;
     }
 
