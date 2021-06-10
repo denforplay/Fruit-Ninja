@@ -3,15 +3,18 @@ using DG.Tweening;
 
 public class Block : PhysicObject
 {
-    [SerializeField] private float _radius = 1.0f;
+    [SerializeField] private float _radius = 2.0f;
 
     public float Radius => _radius;
-
-    private bool isSlice;
 
     public void ScaleBlock()
     {
         this.transform.DOScale(new Vector3(0.5f, 0.5f, 0.5f), 10f);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawSphere(this.transform.position, _radius);
     }
 
     public void RotateBlock()
@@ -24,11 +27,6 @@ public class Block : PhysicObject
         base.Update();
         RotateBlock();
         ScaleBlock();
-    }
-
-    public void Slice()
-    {
-        isSlice = true;
     }
 
     private void OnBecameInvisible()
