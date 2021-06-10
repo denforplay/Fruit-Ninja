@@ -45,7 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gravityScale: 5
-  _radius: 1.7
+  _radius: 1.9
+  _prefab: {fileID: 5731466791598208017}
 --- !u!212 &1500670574676228562
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -8,7 +8,6 @@ public class Cutting : MonoBehaviour
 
     [SerializeField] private GameObject _bladeTrail;
     [SerializeField] private float minCutVelocity = 0.1f;
-
     private bool _isCutting;
     private GameObject _currentBladeTrial;
     Camera _mainCamera;
@@ -60,7 +59,11 @@ public class Cutting : MonoBehaviour
             float colliderPoint = Mathf.Sqrt(Mathf.Pow(colliderPositionX, 2) + Mathf.Pow(colliderPositionY, 2));
             if (colliderPoint <= block.Radius)
             {
-                Destroy(block.gameObject);
+                Fruit fruit = block as Fruit;
+                if (fruit != null)
+                {
+                    fruit.CutFruit();
+                }
             }
         }
     }
