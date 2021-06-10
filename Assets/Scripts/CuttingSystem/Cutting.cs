@@ -5,12 +5,12 @@ using UnityEngine;
 public class Cutting : MonoBehaviour
 {
     [SerializeField] private GameObject _bladeTrail;
-    private bool isCutting;
+    private bool _isCutting;
     private GameObject _currentBladeTrial;
-    Camera cam;
+    Camera _mainCamera;
     private void Start()
     {
-        cam = Camera.main;
+        _mainCamera = Camera.main;
     }
 
     private void Update()
@@ -24,7 +24,7 @@ public class Cutting : MonoBehaviour
             StopCutting();
         }
 
-        if (isCutting)
+        if (_isCutting)
         {
             UpdateCutting();
         }
@@ -33,20 +33,12 @@ public class Cutting : MonoBehaviour
     private void UpdateCutting()
     {
         Vector3 mousePosition = Input.mousePosition;
-        mousePosition.z = cam.nearClipPlane;
-        this.transform.position = cam.ScreenToWorldPoint(mousePosition);
+        mousePosition.z = _mainCamera.nearClipPlane;
+        this.transform.position = _mainCamera.ScreenToWorldPoint(mousePosition);
 
         CutBlocks();
     }
 
-     //float colliderPositionX = this.transform.position.x - block.gameObject.transform.position.x;
-     //       float colliderPositionY = this.transform.position.y - block.gameObject.transform.position.y;
-     //       float colliderPoint = Mathf.Sqrt(Mathf.Pow(colliderPositionX, 2) + Mathf.Pow(colliderPositionY, 2));
-     //       if (colliderPoint <= block.Radius)
-     //       {
-     //           Debug.Log("Fruit is slicing");
-     //           Destroy(block.gameObject);
-     //       }
     private void CutBlocks()
     {
         foreach(Block block in BlockManager._allBlocks)
@@ -64,12 +56,12 @@ public class Cutting : MonoBehaviour
     private void StartCutting()
     {
         _currentBladeTrial = Instantiate(_bladeTrail, transform);
-        isCutting = true;
+        _isCutting = true;
     }
 
     private void StopCutting()
     {
-        isCutting = false;
+        _isCutting = false;
         Destroy(_currentBladeTrial);
     }
 }
