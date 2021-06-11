@@ -1,13 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
+using TMPro;
 public class Cutting : MonoBehaviour
 {
     private Vector2 _defaultPosition = new Vector2(0, 0);
 
     [SerializeField] private GameObject _bladeTrail;
     [SerializeField] private float minCutVelocity = 0.1f;
+    [SerializeField] private TextMeshProUGUI _scoreText;
     private bool _isCutting;
     private GameObject _currentBladeTrial;
     Camera _mainCamera;
@@ -16,6 +16,8 @@ public class Cutting : MonoBehaviour
     {
         _mainCamera = Camera.main;
         _previousPosition = _defaultPosition;
+        Player.maxScore = PlayerPrefs.GetInt("HighScore");
+        _scoreText.text = $"<sprite=0>{Player.score}\nBest:{Player.maxScore}";
     }
 
     private void Update()
@@ -60,8 +62,16 @@ public class Cutting : MonoBehaviour
             if (colliderPoint <= block.Radius)
             {
                 Fruit fruit = block as Fruit;
-                if (fruit != null)
+                if (fruit != null && fruit.IsNotCutted)
                 {
+                    Player.score++;
+                    if (Player.score > PlayerPrefs.GetInt("HighScore"))
+                    {
+                        Player.maxScore = Player.score;
+                        PlayerPrefs.SetInt("HighScore", Player.maxScore);
+                    }
+                    _scoreText.text = $"<sprite=0>{Player.score}\nBest:{Player.maxScore}";
+
                     fruit.CutFruit();
                 }
             }

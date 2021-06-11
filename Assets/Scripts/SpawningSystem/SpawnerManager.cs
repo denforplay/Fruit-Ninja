@@ -2,30 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class SpawnerManager : MonoBehaviour
 {
     [SerializeField] private List<SpawnerLine> _spawnerLines;
     [SerializeField] private List<Block> _blockPrefab;
 
-    [SerializeField] private float _minSpeed = 1f;
-    [SerializeField] private float _maxSpeed = 4f;
+    [SerializeField] private SpeedConfig _speedConfig;
 
-    [SerializeField] private int _minBlocksPackage = 2;
-    [SerializeField] private int _maxBlocksPackage = 5;
-
-    [SerializeField] private float _minPackageInterval = 2.5f;
-    [SerializeField] private float _maxPackageInterval = 5.0f;
-
-    [SerializeField] private float _minBlockInterval = 0.2f;
-    [SerializeField] private float _maxBlockInterval = 0.5f;
-
+    [SerializeField] private BlocksConfig _blocksConfig;
 
     [SerializeField] private float _difficulty = 0;
+
     private float _maxDifficulty = 100f;
+
     private Coroutine _spawnerCoroutine;
     private List<SpawnerLine> _priorityList = new List<SpawnerLine>();
 
-    private List<Block> currentBlocks = new List<Block>();
 
     private void Start()
     {
@@ -63,20 +56,20 @@ public class SpawnerManager : MonoBehaviour
     {
         while (true)
         {
-            int numberOfBlocks = (int)FindValueForCurrentDifficulty(_minBlocksPackage, _maxBlocksPackage);
+            int numberOfBlocks = (int)FindValueForCurrentDifficulty(_blocksConfig.minBlocksPackage, _blocksConfig.maxBlocksPackage);
             StartCoroutine(SpawnBlockPackage(_priorityList[Random.Range(0, _priorityList.Count - 1)], numberOfBlocks));
             _difficulty++;
-            yield return new WaitForSeconds(_maxPackageInterval);
+            float secondsBetweenPackages = FindValueForCurrentDifficulty(_blocksConfig.maxPackageInterval, _blocksConfig.maxPackageInterval);
+            yield return new WaitForSeconds(secondsBetweenPackages);
         }
     }
 
     private IEnumerator SpawnBlockPackage(SpawnerLine spawnerLine, int blocksCount)
     {
-        currentBlocks = new List<Block>();
         while (blocksCount > 0)
         {
             Block block = spawnerLine.GenerateDroppingBlock(_blockPrefab[Random.Range(0, _blockPrefab.Count)]);
-            float horizontalSpeed = FindValueForCurrentDifficulty(_minSpeed, _maxSpeed);
+            float horizontalSpeed = FindValueForCurrentDifficulty(_speedConfig.speedMin, _speedConfig.speedMax);
             float verticalSpeed = horizontalSpeed * Random.Range(1f, 1.5f);
             block.AddSpeed(new Vector3(horizontalSpeed, verticalSpeed));
             if (block.transform.position.x > Camera.main.transform.position.x && block.GetSpeed().x > 0)
@@ -85,7 +78,7 @@ public class SpawnerManager : MonoBehaviour
             }
 
             blocksCount--;
-            float secondsToWaitBetweenBlocks = FindValueForCurrentDifficulty(_maxBlockInterval, _minBlockInterval);
+            float secondsToWaitBetweenBlocks = FindValueForCurrentDifficulty(_blocksConfig.maxBlockInterval, _blocksConfig.minBlockInterval);
             yield return new WaitForSeconds(secondsToWaitBetweenBlocks);
         }
 

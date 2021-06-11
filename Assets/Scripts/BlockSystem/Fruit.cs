@@ -8,6 +8,7 @@ public class Fruit : Block
     [SerializeField] private ParticleSystem _blobParticleSystem;
     [SerializeField] private ParticleSystem _sliceParticleSystem;
     private Color _fruitColor;
+    public bool IsNotCutted => isNotCutted;
     private void Start()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
@@ -40,7 +41,6 @@ public class Fruit : Block
         {
             _spriteRenderer.sprite = fruitParts[0];
             InstantiateRightFruitPart(fruitParts[1]);
-            
         }
     }
 
