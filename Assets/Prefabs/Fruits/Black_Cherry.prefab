@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gravityScale: 5
   _radius: 1.9
-  _prefab: {fileID: 8162686248377147231}
+  _blockManager: {fileID: 3277312641509947743, guid: fce391c77e14576488063d37046661fc, type: 3}
   _blobParticleSystem: {fileID: 3616450806025005285, guid: 85c428ff222fc8348b2e904a7435dbb8, type: 3}
   _sliceParticleSystem: {fileID: 8277034520319086632, guid: efee232bea11aac41acf11b249192f28, type: 3}
 --- !u!212 &8162686248377147228

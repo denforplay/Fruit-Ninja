@@ -5,6 +5,7 @@ public class SpawnerLine : MonoBehaviour
     [SerializeField] private int _priority;
     [SerializeField] private GameObject _firstLinePoint;
     [SerializeField] private GameObject _secondLinePoint;
+    [SerializeField] private BlockManager _blockManager;
 
     public int Priority => _priority;
     private Vector3 FindPointToDrop()
@@ -20,7 +21,8 @@ public class SpawnerLine : MonoBehaviour
         Vector3 spawnPosition = FindPointToDrop();
 
         Block droppingBlock = Instantiate(blockPrefab, spawnPosition, Quaternion.identity);
-        BlockManager._allBlocks.Add(droppingBlock);
+        droppingBlock._blockManager = _blockManager;
+        _blockManager.Add(droppingBlock);
         return droppingBlock;
     }
 

@@ -7,7 +7,7 @@ public class PhysicObject : MonoBehaviour
     private Vector3 _speed;
     private float _topCameraPoint;
 
-    private void Awake()
+    protected void Awake()
     {
         _gravityAcceleration.y = _gravityScale;
         _topCameraPoint = Camera.main.transform.position.y + Camera.main.orthographicSize;

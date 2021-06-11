@@ -2,11 +2,12 @@ using UnityEngine;
 
 public class Fruit : Block
 {
-    private SpriteRenderer _spriteRenderer;
-    private bool isNotCutted = true;
-    [SerializeField] private Fruit _prefab;
+
     [SerializeField] private ParticleSystem _blobParticleSystem;
     [SerializeField] private ParticleSystem _sliceParticleSystem;
+
+    private SpriteRenderer _spriteRenderer;
+    private bool isNotCutted = true;
     private Color _fruitColor;
     public bool IsNotCutted => isNotCutted;
     private void Start()

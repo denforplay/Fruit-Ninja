@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class SpawnerManager : MonoBehaviour
 {
+   
     [SerializeField] private List<SpawnerLine> _spawnerLines;
+
     [SerializeField] private List<Block> _blockPrefab;
 
     [SerializeField] private SpeedConfig _speedConfig;
@@ -14,17 +16,20 @@ public class SpawnerManager : MonoBehaviour
 
     [SerializeField] private float _difficulty = 0;
 
+    [SerializeField] private BlockManager _blockManager;
+
+    private float _healthSpawnPoint;
+
     private float _maxDifficulty = 100f;
 
     private Coroutine _spawnerCoroutine;
     private List<SpawnerLine> _priorityList = new List<SpawnerLine>();
-
-
     private void Start()
     {
         FillPriority();
         StartSpawn();
     }
+
     private void FillPriority()
     {
         for (int i = 0; i < _spawnerLines.Count; i++)

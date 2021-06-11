@@ -1,23 +1,21 @@
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 public class Cutting : MonoBehaviour
 {
-    private Vector2 _defaultPosition = new Vector2(0, 0);
-
     [SerializeField] private GameObject _bladeTrail;
     [SerializeField] private float minCutVelocity = 0.1f;
-    [SerializeField] private TextMeshProUGUI _scoreText;
+    [SerializeField] private ScoreController _scoreController;
+    [SerializeField] private BlockManager _blockManager;
+
     private bool _isCutting;
     private GameObject _currentBladeTrial;
     Camera _mainCamera;
     private Vector2 _previousPosition;
+    private Vector2 _defaultPosition = new Vector2(0, 0);
+
     private void Start()
     {
         _mainCamera = Camera.main;
         _previousPosition = _defaultPosition;
-        Player.maxScore = PlayerPrefs.GetInt("HighScore");
-        _scoreText.text = $"<sprite=0>{Player.score}\nBest:{Player.maxScore}";
     }
 
     private void Update()
@@ -54,7 +52,7 @@ public class Cutting : MonoBehaviour
 
     private void CutBlocks()
     {
-        foreach(Block block in BlockManager._allBlocks)
+        foreach(Block block in _blockManager.allBlocks)
         {
             float colliderPositionX = this.transform.position.x - block.gameObject.transform.position.x;
             float colliderPositionY = this.transform.position.y - block.gameObject.transform.position.y;
@@ -62,16 +60,10 @@ public class Cutting : MonoBehaviour
             if (colliderPoint <= block.Radius)
             {
                 Fruit fruit = block as Fruit;
+
                 if (fruit != null && fruit.IsNotCutted)
                 {
-                    Player.score++;
-                    if (Player.score > PlayerPrefs.GetInt("HighScore"))
-                    {
-                        Player.maxScore = Player.score;
-                        PlayerPrefs.SetInt("HighScore", Player.maxScore);
-                    }
-                    _scoreText.text = $"<sprite=0>{Player.score}\nBest:{Player.maxScore}";
-
+                    _scoreController.AddPoint();
                     fruit.CutFruit();
                 }
             }

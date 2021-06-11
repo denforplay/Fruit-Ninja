@@ -4,8 +4,13 @@ using DG.Tweening;
 public class Block : PhysicObject
 {
     [SerializeField] private float _radius = 2.0f;
-
+    public BlockManager _blockManager;
     public float Radius => _radius;
+
+    private void Awake()
+    {
+        base.Awake();
+    }
 
     public void ScaleBlock()
     {
@@ -29,15 +34,14 @@ public class Block : PhysicObject
         ScaleBlock();
     }
 
-    private void OnBecameInvisible()
+    protected void OnBecameInvisible()
     {
-        Destroy(this.gameObject);
-        
-        DOTween.Kill(transform);
-    }
+        if (_blockManager!= null && _blockManager.allBlocks.Contains(this))
+        {
+            _blockManager.Remove(this);
+        }
 
-    private void OnDestroy()
-    {
-        BlockManager._allBlocks.Remove(this);
+        Destroy(this.gameObject);
+        DOTween.Kill(transform);
     }
 }
