@@ -930,6 +930,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bladeTrail: {fileID: 4384099512919068820, guid: 82e4e9139bca27343901b6a90b794b70, type: 3}
+  minCutVelocity: 0.05
 --- !u!4 &2049933138
 Transform:
   m_ObjectHideFlags: 0

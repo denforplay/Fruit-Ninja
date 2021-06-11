@@ -1,15 +1,16 @@
 using UnityEngine;
-using DG.Tweening;
-using System;
 
 public class Fruit : Block
 {
     private SpriteRenderer _spriteRenderer;
     private bool isNotCutted = true;
     [SerializeField] private Fruit _prefab;
+    [SerializeField] private ParticleSystem _particleSystem;
+    private Color _fruitColor;
     private void Start()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _fruitColor = _spriteRenderer.color;
     }
 
     private Sprite[] GenerateHalfFruitSprite()
@@ -32,17 +33,21 @@ public class Fruit : Block
 
     public void CutFruit()
     {
-
         Sprite[] fruitParts = GenerateHalfFruitSprite();
         if (fruitParts != null)
         {
-            this._spriteRenderer.sprite = fruitParts[0];
+            _spriteRenderer.sprite = fruitParts[0];
             Fruit secondPart = Instantiate(this);
             secondPart._spriteRenderer = this._spriteRenderer;
             secondPart._spriteRenderer.sprite = fruitParts[1];
             secondPart.AddSpeed(this.GetSpeed());
             secondPart.ReverseHorizontalSpeed();
             secondPart._spriteRenderer.sprite = fruitParts[1];
+            _particleSystem.startColor = _fruitColor;
+            ParticleSystem weqwe = Instantiate(_particleSystem, transform);
+            weqwe.transform.SetParent(null);
+            weqwe.Play();
+            Destroy(weqwe.gameObject, 5.0f);
         }
     }
 }
