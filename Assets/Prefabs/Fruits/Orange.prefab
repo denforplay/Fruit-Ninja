@@ -47,7 +47,8 @@ MonoBehaviour:
   _gravityScale: 5
   _radius: 1.8
   _prefab: {fileID: 6949280670210136523}
-  _particleSystem: {fileID: 3616450806025005285, guid: 85c428ff222fc8348b2e904a7435dbb8, type: 3}
+  _blobParticleSystem: {fileID: 3616450806025005285, guid: 85c428ff222fc8348b2e904a7435dbb8, type: 3}
+  _sliceParticleSystem: {fileID: 8277034520319086632, guid: efee232bea11aac41acf11b249192f28, type: 3}
 --- !u!212 &4263216366317769736
 SpriteRenderer:
   m_ObjectHideFlags: 0

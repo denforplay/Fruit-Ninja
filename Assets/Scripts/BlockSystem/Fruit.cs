@@ -5,7 +5,8 @@ public class Fruit : Block
     private SpriteRenderer _spriteRenderer;
     private bool isNotCutted = true;
     [SerializeField] private Fruit _prefab;
-    [SerializeField] private ParticleSystem _particleSystem;
+    [SerializeField] private ParticleSystem _blobParticleSystem;
+    [SerializeField] private ParticleSystem _sliceParticleSystem;
     private Color _fruitColor;
     private void Start()
     {
@@ -23,6 +24,7 @@ public class Fruit : Block
             Rect rightFruitPart = new Rect(thisTexture.width / 2, 0, thisTexture.width / 2, thisTexture.height);
             Sprite leftPart = Sprite.Create(thisTexture, leftFruitPart, Vector2.one * 0.5f, 50);
             Sprite rightPart = Sprite.Create(thisTexture, rightFruitPart, Vector2.one * 0.5f, 50);
+            InstantiateParticles();
             return new Sprite[] { leftPart, rightPart };
         }
         else
@@ -37,17 +39,30 @@ public class Fruit : Block
         if (fruitParts != null)
         {
             _spriteRenderer.sprite = fruitParts[0];
-            Fruit secondPart = Instantiate(this);
-            secondPart._spriteRenderer = this._spriteRenderer;
-            secondPart._spriteRenderer.sprite = fruitParts[1];
-            secondPart.AddSpeed(this.GetSpeed());
-            secondPart.ReverseHorizontalSpeed();
-            secondPart._spriteRenderer.sprite = fruitParts[1];
-            _particleSystem.startColor = _fruitColor;
-            ParticleSystem weqwe = Instantiate(_particleSystem, transform);
-            weqwe.transform.SetParent(null);
-            weqwe.Play();
-            Destroy(weqwe.gameObject, 5.0f);
+            InstantiateRightFruitPart(fruitParts[1]);
+            
         }
+    }
+
+    private void InstantiateParticles()
+    {
+        _blobParticleSystem.startColor = _fruitColor;
+        ParticleSystem currentCut = Instantiate(_sliceParticleSystem, transform);
+        ParticleSystem currentBlobs = Instantiate(_blobParticleSystem, transform);
+        currentBlobs.transform.SetParent(null);
+        currentBlobs.Play();
+        currentCut.transform.SetParent(null);
+        Destroy(currentCut.gameObject, currentCut.duration);
+        Destroy(currentBlobs.gameObject, 5.0f);
+    }
+
+    private void InstantiateRightFruitPart(Sprite rightPart)
+    {
+        Fruit secondPart = Instantiate(this);
+        secondPart._spriteRenderer = this._spriteRenderer;
+        secondPart._spriteRenderer.sprite = rightPart;
+        secondPart.AddSpeed(this.GetSpeed());
+        secondPart.ReverseHorizontalSpeed();
+        secondPart._spriteRenderer.sprite = rightPart;
     }
 }
