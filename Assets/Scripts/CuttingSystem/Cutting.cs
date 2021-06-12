@@ -1,8 +1,9 @@
 using UnityEngine;
+
 public class Cutting : MonoBehaviour
 {
     [SerializeField] private GameObject _bladeTrail;
-    [SerializeField] private float minCutVelocity = 0.1f;
+    [SerializeField] private float _minCutVelocity = 0.1f;
     [SerializeField] private ScoreController _scoreController;
     [SerializeField] private BlockManager _blockManager;
 
@@ -11,6 +12,11 @@ public class Cutting : MonoBehaviour
     Camera _mainCamera;
     private Vector2 _previousPosition;
     private Vector2 _defaultPosition = new Vector2(0, 0);
+
+    public void OffCutting()
+    {
+        _currentBladeTrial = null;
+    }
 
     private void Start()
     {
@@ -42,7 +48,7 @@ public class Cutting : MonoBehaviour
         Vector2 newPosition = _mainCamera.ScreenToWorldPoint(mousePosition);
         float velocity = (newPosition - _previousPosition).magnitude * Time.deltaTime;
         this.transform.position = newPosition;
-        if (velocity > minCutVelocity && _previousPosition != _defaultPosition)
+        if (velocity > _minCutVelocity && _previousPosition != _defaultPosition)
         {
             CutBlocks();
         }

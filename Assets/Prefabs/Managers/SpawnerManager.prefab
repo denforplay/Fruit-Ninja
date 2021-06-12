@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6494585289558988526
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6494585289558988524}
+  - component: {fileID: 6494585289558988525}
+  m_Layer: 0
+  m_Name: SpawnerManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6494585289558988524
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6494585289558988526}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6494585289558988525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6494585289558988526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c3dc8dad2ee70e4a8bfa88d7fd03441, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spawnerLines:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _blockPrefab:
+  - {fileID: 8162686248377147231, guid: bb6bbf702729a5746b9d868c07dcf524, type: 3}
+  - {fileID: 6949280670210136523, guid: bec48071516891147a8bfa394f28d45a, type: 3}
+  - {fileID: 5731466791598208017, guid: f09f43e3301c9df4faeeece077b5a3f8, type: 3}
+  - {fileID: 8162686248377147231, guid: d5c60081a59d62244bb84e026ff0a0ab, type: 3}
+  - {fileID: 8162686248377147231, guid: 966adec178dc88044918b9a21f38d652, type: 3}
+  - {fileID: 8162686248377147231, guid: c8609d1edd4807b4695804007a90b9fa, type: 3}
+  _speedConfig:
+    speedMin: 5
+    speedMax: 10
+  _blocksConfig:
+    minBlocksPackage: 2
+    maxBlocksPackage: 5
+    minPackageInterval: 2.5
+    maxPackageInterval: 5
+    minBlockInterval: 0.2
+    maxBlockInterval: 0.5
+  _difficulty: 1
+  _blockManager: {fileID: 0}

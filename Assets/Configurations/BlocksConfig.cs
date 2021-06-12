@@ -1,9 +1,10 @@
 using System;
-using UnityEngine;
+using System.Collections.Generic;
 
 [Serializable]
 public class BlocksConfig 
 {
+    public List<Block> blockPrefab;
     public int minBlocksPackage = 2;
     public int maxBlocksPackage = 5;
     public float minPackageInterval = 2.5f;

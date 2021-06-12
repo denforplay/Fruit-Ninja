@@ -5,10 +5,7 @@ using UnityEngine;
 
 public class SpawnerManager : MonoBehaviour
 {
-   
     [SerializeField] private List<SpawnerLine> _spawnerLines;
-
-    [SerializeField] private List<Block> _blockPrefab;
 
     [SerializeField] private SpeedConfig _speedConfig;
 
@@ -73,7 +70,8 @@ public class SpawnerManager : MonoBehaviour
     {
         while (blocksCount > 0)
         {
-            Block block = spawnerLine.GenerateDroppingBlock(_blockPrefab[Random.Range(0, _blockPrefab.Count)]);
+            Block randomFruit = _blocksConfig.blockPrefab[Random.Range(0, _blocksConfig.blockPrefab.Count)];
+            Block block = spawnerLine.GenerateDroppingBlock(randomFruit);
             float horizontalSpeed = FindValueForCurrentDifficulty(_speedConfig.speedMin, _speedConfig.speedMax);
             float verticalSpeed = horizontalSpeed * Random.Range(1f, 1.5f);
             block.AddSpeed(new Vector3(horizontalSpeed, verticalSpeed));
@@ -92,5 +90,10 @@ public class SpawnerManager : MonoBehaviour
     private void StartSpawn()
     {
         _spawnerCoroutine = StartCoroutine(Spawn());
+    }
+
+    public void StopSpawn()
+    {
+        StopCoroutine(_spawnerCoroutine);
     }
 }

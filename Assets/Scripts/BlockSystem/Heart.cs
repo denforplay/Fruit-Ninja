@@ -15,7 +15,6 @@ public class Heart : Block
     }
     private void Update()
     {
-        
     }
 
     public void DeleteHeart()

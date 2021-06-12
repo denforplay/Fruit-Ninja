@@ -1,11 +1,12 @@
 using UnityEngine;
 using TMPro;
+
 public class ScoreController : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _scoreText;
+
     private int _score;
     private string _playerHighScore = "HighScore";
-
     private void Start()
     {
         Player.maxScore = PlayerPrefs.GetInt(_playerHighScore);
@@ -15,10 +16,10 @@ public class ScoreController : MonoBehaviour
     public void AddPoint()
     {
         _score++;
-        if (_score > PlayerPrefs.GetInt("HighScore"))
+        if (_score > PlayerPrefs.GetInt(_playerHighScore))
         {
             Player.maxScore = Player.score;
-            PlayerPrefs.SetInt("HighScore", _score);
+            PlayerPrefs.SetInt(_playerHighScore, _score);
         }
 
         _scoreText.text = $"<sprite=0>{_score}\nBest:{Player.maxScore}";

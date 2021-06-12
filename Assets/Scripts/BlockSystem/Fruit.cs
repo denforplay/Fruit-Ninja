@@ -53,7 +53,7 @@ public class Fruit : Block
         currentBlobs.transform.SetParent(null);
         currentBlobs.Play();
         currentCut.transform.SetParent(null);
-        Destroy(currentCut.gameObject, currentCut.duration);
+        Destroy(currentCut.gameObject, currentCut.main.duration);
         Destroy(currentBlobs.gameObject, 5.0f);
     }
 

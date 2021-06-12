@@ -4,13 +4,10 @@ using DG.Tweening;
 public class Block : PhysicObject
 {
     [SerializeField] private float _radius = 2.0f;
+
     public BlockManager _blockManager;
     public float Radius => _radius;
 
-    private void Awake()
-    {
-        base.Awake();
-    }
 
     public void ScaleBlock()
     {

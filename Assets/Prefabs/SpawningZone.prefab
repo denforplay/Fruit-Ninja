@@ -48,6 +48,7 @@ MonoBehaviour:
   _priority: 2
   _firstLinePoint: {fileID: 1979797823870111155}
   _secondLinePoint: {fileID: 1979797823972872768}
+  _blockManager: {fileID: 5514515484443646181, guid: fce391c77e14576488063d37046661fc, type: 3}
 --- !u!1 &1979797823870111155
 GameObject:
   m_ObjectHideFlags: 0
