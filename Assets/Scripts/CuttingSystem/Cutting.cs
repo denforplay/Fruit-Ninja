@@ -7,16 +7,12 @@ public class Cutting : MonoBehaviour
     [SerializeField] private ScoreController _scoreController;
     [SerializeField] private BlockManager _blockManager;
 
+    private bool _isPlaying = true;
     private bool _isCutting;
     private GameObject _currentBladeTrial;
     Camera _mainCamera;
     private Vector2 _previousPosition;
     private Vector2 _defaultPosition = new Vector2(0, 0);
-
-    public void OffCutting()
-    {
-        _currentBladeTrial = null;
-    }
 
     private void Start()
     {
@@ -26,18 +22,21 @@ public class Cutting : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (_isPlaying)
         {
-            StartCutting();
-        }
-        if (Input.GetMouseButtonUp(0))
-        {
-            StopCutting();
-        }
+            if (Input.GetMouseButtonDown(0))
+            {
+                StartCutting();
+            }
+            if (Input.GetMouseButtonUp(0))
+            {
+                StopCutting();
+            }
 
-        if (_isCutting)
-        {
-            UpdateCutting();
+            if (_isCutting)
+            {
+                UpdateCutting();
+            }
         }
     }
 
@@ -82,10 +81,21 @@ public class Cutting : MonoBehaviour
         _isCutting = true;
     }
 
-    private void StopCutting()
+    public void StopCutting()
     {
         _isCutting = false;
         _previousPosition = _defaultPosition;
         Destroy(_currentBladeTrial);
+    }
+
+    public void StartGame()
+    {
+        _isPlaying = true;
+    }
+
+    public void BreakGame()
+    {
+        this.StopCutting();
+        _isPlaying = false;
     }
 }

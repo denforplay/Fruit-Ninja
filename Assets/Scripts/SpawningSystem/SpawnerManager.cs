@@ -15,6 +15,9 @@ public class SpawnerManager : MonoBehaviour
 
     [SerializeField] private BlockManager _blockManager;
 
+    [SerializeField] private HealthController _healthController;
+
+    [SerializeField] private Cutting _cutting;
     private float _healthSpawnPoint;
 
     private float _maxDifficulty = 100f;
@@ -87,8 +90,11 @@ public class SpawnerManager : MonoBehaviour
 
     }
 
-    private void StartSpawn()
+    public void StartSpawn()
     {
+        Player.score = 0;
+        _cutting.StartGame();
+        _healthController.InstantiateHearts();
         _spawnerCoroutine = StartCoroutine(Spawn());
     }
 

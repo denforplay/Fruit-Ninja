@@ -5,7 +5,6 @@ public class ScoreController : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _scoreText;
 
-    private int _score;
     private string _playerHighScore = "HighScore";
     private void Start()
     {
@@ -15,13 +14,13 @@ public class ScoreController : MonoBehaviour
 
     public void AddPoint()
     {
-        _score++;
-        if (_score > PlayerPrefs.GetInt(_playerHighScore))
+        Player.score++;
+        if (Player.score >= PlayerPrefs.GetInt(_playerHighScore))
         {
             Player.maxScore = Player.score;
-            PlayerPrefs.SetInt(_playerHighScore, _score);
+            PlayerPrefs.SetInt(_playerHighScore, Player.maxScore);
         }
 
-        _scoreText.text = $"<sprite=0>{_score}\nBest:{Player.maxScore}";
+        _scoreText.text = $"<sprite=0>{Player.score}\nBest:{Player.maxScore}";
     }
 }

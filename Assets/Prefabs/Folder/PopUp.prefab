@@ -280,6 +280,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e25336c75b06067428110795daa5cf83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _popUpWindow: {fileID: 0}
+  _cutting: {fileID: 0}
+  _spawnerManager: {fileID: 0}
 --- !u!1 &5216496470174874123
 GameObject:
   m_ObjectHideFlags: 0

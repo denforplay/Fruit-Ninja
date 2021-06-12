@@ -8,13 +8,18 @@ public class HealthController : MonoBehaviour
     [SerializeField] private Canvas _popUpWindow;
     [SerializeField] private Heart _heartPrefab;
     [SerializeField] private Sprite _noHeartPrefab;
-    [SerializeField] private SpawnerManager _spawnerManager;
     [SerializeField] private SceneController _sceneController;
+
     private List<Heart> _hearts;
 
-    void Start()
+    private void DeleteAllHurts()
     {
-        InstantiateHearts();
+        for (int i = 0; i < _hearts.Count; i++)
+        {
+            Destroy(_hearts[i].gameObject);
+        }
+
+        _hearts.Clear();
     }
 
     public void DeleteHeart()
@@ -28,7 +33,7 @@ public class HealthController : MonoBehaviour
                 _hearts[i].GetSpriteRenderer.sprite = _noHeartPrefab;
                 if (i == 0)
                 {
-                    _spawnerManager.StopSpawn();
+                    DeleteAllHurts();
                     _sceneController.PopUpRestart();
                 }
                 break;
@@ -36,7 +41,7 @@ public class HealthController : MonoBehaviour
         }
     }
 
-    private void InstantiateHearts()
+    public void InstantiateHearts()
     {
         _hearts = new List<Heart>();
         for (int i = 0; i < Player.health; i++)
