@@ -31,13 +31,15 @@ public class HealthController : MonoBehaviour
             {
                 _hearts[i].DeleteHeart();
                 _hearts[i].GetSpriteRenderer.sprite = _noHeartPrefab;
-                if (i == 0)
-                {
-                    DeleteAllHurts();
-                    _sceneController.PopUpRestart();
-                }
+
                 break;
             }
+        }
+
+        if (i <= 0)
+        {
+            DeleteAllHurts();
+            _sceneController.PopUpRestart();
         }
     }
 
