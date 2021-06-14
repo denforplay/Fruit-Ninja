@@ -9,7 +9,7 @@ public class HealthController : MonoBehaviour
     [SerializeField] private Heart _heartPrefab;
     [SerializeField] private Sprite _noHeartPrefab;
     [SerializeField] private SceneController _sceneController;
-
+    [SerializeField] private Player _player;
     private List<Heart> _hearts;
 
     private void DeleteAllHurts()
@@ -46,7 +46,7 @@ public class HealthController : MonoBehaviour
     public void InstantiateHearts()
     {
         _hearts = new List<Heart>();
-        for (int i = 0; i < Player.health; i++)
+        for (int i = 0; i < _player.health; i++)
         {
             Heart heart = Instantiate(_heartPrefab);
             float xPos = Camera.main.transform.position.x + Camera.main.orthographicSize * 2 - 2 * heart.Radius * i;

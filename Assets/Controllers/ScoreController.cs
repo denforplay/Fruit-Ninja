@@ -4,23 +4,24 @@ using TMPro;
 public class ScoreController : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _scoreText;
-
+    [SerializeField] private Player _player;
     private string _playerHighScore = "HighScore";
-    private void Start()
+    public void Start()
     {
-        Player.maxScore = PlayerPrefs.GetInt(_playerHighScore);
-        _scoreText.text = $"<sprite=0>{Player.score}\nBest:{Player.maxScore}";
+        _player.score = 0;
+        _player.maxScore = PlayerPrefs.GetInt(_playerHighScore);
+        _scoreText.text = $"<sprite=0>{_player.score}\nBest:{_player.maxScore}";
     }
 
     public void AddPoint()
     {
-        Player.score++;
-        if (Player.score >= PlayerPrefs.GetInt(_playerHighScore))
+        _player.score++;
+        if (_player.score >= PlayerPrefs.GetInt(_playerHighScore))
         {
-            Player.maxScore = Player.score;
-            PlayerPrefs.SetInt(_playerHighScore, Player.maxScore);
+            _player.maxScore = _player.score;
+            PlayerPrefs.SetInt(_playerHighScore, _player.maxScore);
         }
 
-        _scoreText.text = $"<sprite=0>{Player.score}\nBest:{Player.maxScore}";
+        _scoreText.text = $"<sprite=0>{_player.score}\nBest:{_player.maxScore}";
     }
 }

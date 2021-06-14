@@ -1,6 +1,9 @@
-public static class Player
+using UnityEngine;
+
+[CreateAssetMenu]
+public class Player : ScriptableObject
 {
-    public static int score = 0;
-    public static int maxScore = 0;
-    public static int health = 3;
+    public int score = 0;
+    public int maxScore = 0;
+    public int health = 3;
 }

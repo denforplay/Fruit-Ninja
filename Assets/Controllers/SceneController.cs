@@ -9,14 +9,11 @@ public class SceneController : MonoBehaviour
     [SerializeField] private Cutting _cutting;
     [SerializeField] private SpawnerManager _spawnerManager;
     [SerializeField] private BlockManager _blockManager;
-
-    public void StartGame()
-    {
-        SceneManager.LoadScene(1);
-    }
+    [SerializeField] private ScoreController _scoreController;
 
     public void RestartGame()
     {
+        _scoreController.Start();
         _spawnerManager.StartSpawn();
         Canvas currentPopUp = GetComponentInParent<Canvas>();
         Destroy(currentPopUp.gameObject);

@@ -35,11 +35,12 @@ public class Fruit : Block
         }
     }
 
-    public void CutFruit()
+    public void CutFruit(BlockManager blockManager)
     {
         Sprite[] fruitParts = GenerateHalfFruitSprite();
         if (fruitParts != null)
         {
+            blockManager.Remove(this);
             _spriteRenderer.sprite = fruitParts[0];
             InstantiateRightFruitPart(fruitParts[1]);
         }
