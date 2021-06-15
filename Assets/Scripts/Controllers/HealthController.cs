@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
-using UnityEngine.UI;
+using System.Linq;
 
 public class HealthController : MonoBehaviour
 {
@@ -12,6 +11,7 @@ public class HealthController : MonoBehaviour
     [SerializeField] private Player _player;
     private List<Heart> _hearts;
 
+    public int HeartsCount => _hearts.Count(x => x.GetSpriteRenderer.sprite == _heartPrefab);
     private void DeleteAllHurts()
     {
         for (int i = 0; i < _hearts.Count; i++)
@@ -29,7 +29,7 @@ public class HealthController : MonoBehaviour
         {
             if (_hearts[i].IsHeart == true)
             {
-                _hearts[i].DeleteHeart();
+                _hearts[i].Cut();
                 _hearts[i].GetSpriteRenderer.sprite = _noHeartPrefab;
 
                 break;
@@ -56,4 +56,5 @@ public class HealthController : MonoBehaviour
             _hearts.Add(heart);
         }
     }
+
 }

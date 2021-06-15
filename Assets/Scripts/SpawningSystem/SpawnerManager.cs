@@ -20,7 +20,8 @@ public class SpawnerManager : MonoBehaviour
     [SerializeField] private Cutting _cutting;
 
     [SerializeField] private Player _player;
-    private float _healthSpawnPoint;
+
+    [SerializeField] private Bomb _bomb;
 
     private float _maxDifficulty = 100f;
 
@@ -73,10 +74,22 @@ public class SpawnerManager : MonoBehaviour
 
     private IEnumerator SpawnBlockPackage(SpawnerLine spawnerLine, int blocksCount)
     {
+        int bombsCount = Random.Range(1, blocksCount / 2);
         while (blocksCount > 0)
         {
-            Block randomFruit = _blocksConfig.blockPrefab[Random.Range(0, _blocksConfig.blockPrefab.Count)];
-            Block block = spawnerLine.GenerateDroppingBlock(randomFruit);
+            Block block;
+            float blockRand = Random.Range(0f, 1f);
+            if (bombsCount > 0 && blockRand <= 0.5f)
+            {
+                block = spawnerLine.GenerateDroppingBlock(_bomb);
+                bombsCount--;
+            }
+            else
+            {
+                Block randomFruit = _blocksConfig.blockPrefab[Random.Range(0, _blocksConfig.blockPrefab.Count)];
+                block = spawnerLine.GenerateDroppingBlock(randomFruit);
+            }
+           
             float horizontalSpeed = FindValueForCurrentDifficulty(_speedConfig.speedMin, _speedConfig.speedMax);
             float verticalSpeed = horizontalSpeed * Random.Range(1f, 1.5f);
             block.AddSpeed(new Vector3(horizontalSpeed, verticalSpeed));

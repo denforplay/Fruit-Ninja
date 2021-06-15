@@ -1,26 +1,24 @@
 using UnityEngine;
+using DG.Tweening;
 
 public class Fruit : Block
 {
-
     [SerializeField] private ParticleSystem _blobParticleSystem;
     [SerializeField] private ParticleSystem _sliceParticleSystem;
+    [SerializeField] private Color _fruitColor;
 
-    private SpriteRenderer _spriteRenderer;
-    private bool isNotCutted = true;
-    private Color _fruitColor;
-    public bool IsNotCutted => isNotCutted;
-    private void Start()
+    private new void Awake()
     {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-        _fruitColor = _spriteRenderer.color;
+        base.Awake();
+        _iRotatable = new Rotate();
+        _iScalable = new Scale();
     }
 
     private Sprite[] GenerateHalfFruitSprite()
     {
-        if (isNotCutted)
+        if (_isNotCutted)
         {
-            isNotCutted = false;
+            _isNotCutted = false;
             Texture2D thisTexture = _spriteRenderer.sprite.texture;
             Rect leftFruitPart = new Rect(0, 0, thisTexture.width / 2, thisTexture.height);
             Rect rightFruitPart = new Rect(thisTexture.width / 2, 0, thisTexture.width / 2, thisTexture.height);
@@ -35,12 +33,11 @@ public class Fruit : Block
         }
     }
 
-    public void CutFruit(BlockManager blockManager)
+    public override void Cut()
     {
         Sprite[] fruitParts = GenerateHalfFruitSprite();
         if (fruitParts != null)
         {
-            blockManager.Remove(this);
             _spriteRenderer.sprite = fruitParts[0];
             InstantiateRightFruitPart(fruitParts[1]);
         }
@@ -53,6 +50,7 @@ public class Fruit : Block
         ParticleSystem currentBlobs = Instantiate(_blobParticleSystem, transform);
         currentBlobs.transform.SetParent(null);
         currentBlobs.Play();
+        currentCut.Play();
         currentCut.transform.SetParent(null);
         Destroy(currentCut.gameObject, currentCut.main.duration);
         Destroy(currentBlobs.gameObject, 5.0f);
@@ -61,10 +59,21 @@ public class Fruit : Block
     private void InstantiateRightFruitPart(Sprite rightPart)
     {
         Fruit secondPart = Instantiate(this);
-        secondPart._spriteRenderer = this._spriteRenderer;
+        secondPart._spriteRenderer = _spriteRenderer;
         secondPart._spriteRenderer.sprite = rightPart;
-        secondPart.AddSpeed(this.GetSpeed());
+        secondPart.AddSpeed(GetSpeed());
         secondPart.ReverseHorizontalSpeed();
-        secondPart._spriteRenderer.sprite = rightPart;
+        secondPart._isNotCutted = false;
+    }
+
+    public void RotateObject()
+    {
+        transform.DORotate(new Vector3(0, 0, 360), 5f, RotateMode.FastBeyond360);
+
+    }
+
+    public void ScaleObject()
+    {
+        transform.DOScale(new Vector3(0.5f, 0.5f), 5f);
     }
 }

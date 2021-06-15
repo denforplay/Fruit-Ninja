@@ -13,6 +13,7 @@ public class SceneController : MonoBehaviour
 
     public void RestartGame()
     {
+
         _scoreController.Start();
         _spawnerManager.StartSpawn();
         Canvas currentPopUp = GetComponentInParent<Canvas>();
@@ -23,7 +24,7 @@ public class SceneController : MonoBehaviour
     {
         _spawnerManager.StopSpawn();
         _cutting.BreakGame();
-        if (_blockManager.allBlocks.Count - 1 <= 0)
+        if (_blockManager.allBlocks.Count == 0)
         {
             Canvas currentPopUp = Instantiate(_popUpWindow, transform);
             currentPopUp.gameObject.SetActive(true);

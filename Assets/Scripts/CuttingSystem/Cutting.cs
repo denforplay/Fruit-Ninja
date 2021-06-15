@@ -64,13 +64,12 @@ public class Cutting : MonoBehaviour
             float colliderPoint = Mathf.Sqrt(Mathf.Pow(colliderPositionX, 2) + Mathf.Pow(colliderPositionY, 2));
             if (colliderPoint <= block.Radius)
             {
-                Fruit fruit = block as Fruit;
-
-                if (fruit != null && fruit.IsNotCutted)
+                if (block is Fruit && block.IsNotCutted)
                 {
                     _scoreController.AddPoint();
-                    fruit.CutFruit(_blockManager);
                 }
+
+                block.Cut();
             }
         }
     }

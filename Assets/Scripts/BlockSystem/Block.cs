@@ -1,35 +1,33 @@
 using UnityEngine;
 using DG.Tweening;
 
-public class Block : PhysicObject
+public abstract class Block : PhysicObject
 {
-    [SerializeField] private float _radius = 2.0f;
+    [SerializeField] protected float _radius;
+
+    protected SpriteRenderer _spriteRenderer;
 
     public BlockManager _blockManager;
+
+    protected bool _isNotCutted = true;
+
+    protected IScalable _iScalable;
+
+    protected IRotatable _iRotatable;
+
     public float Radius => _radius;
-
-
-    public void ScaleBlock()
+    public bool IsNotCutted => _isNotCutted;
+    public SpriteRenderer GetSpriteRenderer => _spriteRenderer;
+    protected void Start()
     {
-        this.transform.DOScale(new Vector3(0.5f, 0.5f, 0.5f), 10f);
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _iScalable = new NoScale();
+        _iRotatable = new NoRotate();
+        _iScalable.ScaleObject(this);
+        _iRotatable.RotateObject(this);
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawSphere(this.transform.position, _radius);
-    }
-
-    public void RotateBlock()
-    {
-        this.transform.DORotate(new Vector3(0, 0, 360), 5f, RotateMode.FastBeyond360);
-    }
-
-    private void Update()
-    {
-        base.Update();
-        RotateBlock();
-        ScaleBlock();
-    }
+    public abstract void Cut();
 
     protected void OnBecameInvisible()
     {
@@ -38,7 +36,7 @@ public class Block : PhysicObject
             _blockManager.Remove(this);
         }
 
-        Destroy(this.gameObject);
+        Destroy(gameObject);
         DOTween.Kill(transform);
     }
 }
