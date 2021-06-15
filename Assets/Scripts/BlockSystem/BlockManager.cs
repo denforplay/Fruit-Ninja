@@ -7,12 +7,10 @@ public class BlockManager : MonoBehaviour
     [SerializeField] private HealthController _healthController;
     [SerializeField] private SceneController _sceneController;
     public readonly List<Block> allBlocks = new List<Block>();
-    [SerializeField] private float count;
 
     public void Remove(Block blockToRemove)
     {
         allBlocks.Remove(blockToRemove);
-        count = allBlocks.Count;
         Fruit fruitToRemove = blockToRemove as Fruit;
         if (fruitToRemove != null && fruitToRemove.IsNotCutted)
         {
@@ -25,11 +23,14 @@ public class BlockManager : MonoBehaviour
             _healthController.DeleteHeart();
         }
 
+        //if (_healthController.HeartsCount == 0)
+        //{
+        //    _healthController.DeleteHeart();
+        //}
     }
 
     public void Add(Block blockToAdd)
     {
         allBlocks.Add(blockToAdd);
-        count = allBlocks.Count;
     }
 }

@@ -11,7 +11,7 @@ public class HealthController : MonoBehaviour
     [SerializeField] private Player _player;
     private List<Heart> _hearts;
 
-    public int HeartsCount => _hearts.Count(x => x.GetSpriteRenderer.sprite == _heartPrefab);
+    public int HeartsCount => _hearts.Count;
     private void DeleteAllHurts()
     {
         for (int i = 0; i < _hearts.Count; i++)
@@ -46,10 +46,10 @@ public class HealthController : MonoBehaviour
     public void InstantiateHearts()
     {
         _hearts = new List<Heart>();
-        for (int i = 0; i < _player.health; i++)
+        for (int i = 1; i <= _player.health; i++)
         {
             Heart heart = Instantiate(_heartPrefab);
-            float xPos = Camera.main.transform.position.x + Camera.main.orthographicSize * 2 - 2 * heart.Radius * i;
+            float xPos = Camera.main.transform.position.x + Camera.main.orthographicSize * 2 - 3 * heart.Radius * i;
             float yPos = Camera.main.transform.position.y + Camera.main.orthographicSize - heart.Radius;
             Vector3 heartPosition = new Vector3(xPos, yPos);
             heart.transform.position = heartPosition;
