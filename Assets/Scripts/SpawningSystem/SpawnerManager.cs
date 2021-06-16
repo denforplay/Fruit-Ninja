@@ -23,6 +23,11 @@ public class SpawnerManager : MonoBehaviour
 
     [SerializeField] private Bomb _bomb;
 
+    [SerializeField] private HeartBonus _heartBonus;
+
+    [SerializeField] private float _bombChance = 0.5f;
+    [SerializeField] private float _heartBonusChance = 0.5f;
+
     private float _maxDifficulty = 100f;
 
     private Coroutine _spawnerCoroutine;
@@ -46,7 +51,7 @@ public class SpawnerManager : MonoBehaviour
 
     public float FindValueForCurrentDifficulty(float min, float max)
     {
-        if (_difficulty <= 100)
+        if (_difficulty <= _maxDifficulty)
         {
             float difficultPercentage = _difficulty / _maxDifficulty;
 
@@ -75,14 +80,21 @@ public class SpawnerManager : MonoBehaviour
     private IEnumerator SpawnBlockPackage(SpawnerLine spawnerLine, int blocksCount)
     {
         int bombsCount = Random.Range(1, blocksCount / 2);
+        int heartBonusCount = Random.Range(1, blocksCount / 2);
         while (blocksCount > 0)
         {
             Block block;
-            float blockRand = Random.Range(0f, 1f);
-            if (bombsCount > 0 && blockRand <= 0.5f)
+            float bombRand = Random.Range(0f, 1f);
+            float heartRand = Random.Range(0f, 1f);
+            if (bombsCount > 0 && bombRand <= _bombChance)
             {
                 block = spawnerLine.GenerateDroppingBlock(_bomb);
                 bombsCount--;
+            }
+            else if (heartBonusCount > 0 && heartRand <= _heartBonusChance && _player.health < _player.maxhealth)
+            {
+                block = spawnerLine.GenerateDroppingBlock(_heartBonus);
+                heartBonusCount--;
             }
             else
             {
@@ -107,6 +119,7 @@ public class SpawnerManager : MonoBehaviour
 
     public void StartSpawn()
     {
+        _player.health = _player.maxhealth;
         _player.score = 0;
         _cutting.StartGame();
         _healthController.InstantiateHearts();

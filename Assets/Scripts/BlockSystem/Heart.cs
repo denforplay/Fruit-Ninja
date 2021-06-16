@@ -18,4 +18,9 @@ public class Heart : Block
     {
         _isHeart = false;
     }
+
+    public void SetHeartActive()
+    {
+        _isHeart = true;
+    }
 }

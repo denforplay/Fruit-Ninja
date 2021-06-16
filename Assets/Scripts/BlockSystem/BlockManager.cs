@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class BlockManager : MonoBehaviour
 {
@@ -23,6 +24,11 @@ public class BlockManager : MonoBehaviour
             _healthController.DeleteHeart();
         }
 
+        HeartBonus heartBonusToRemove = blockToRemove as HeartBonus;
+        if (heartBonusToRemove != null && !heartBonusToRemove.IsNotCutted)
+        {
+            _healthController.AddHeart();
+        }
     }
 
     public void Add(Block blockToAdd)
