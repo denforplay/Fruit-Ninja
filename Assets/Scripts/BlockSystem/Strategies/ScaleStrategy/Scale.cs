@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class Scale : IScalable
 {
-    public void ScaleObject(Block rotatingBlock)
+    public void ScaleObject(Block rotatingBlock, float duration, float scale)
     {
-        rotatingBlock.transform.DORotate(new Vector3(0.5f, 0.5f), 5f);
+        rotatingBlock.transform.DOScale(new Vector3(scale, scale, scale), duration);
     }
 }

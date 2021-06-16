@@ -23,10 +23,6 @@ public class BlockManager : MonoBehaviour
             _healthController.DeleteHeart();
         }
 
-        //if (_healthController.HeartsCount == 0)
-        //{
-        //    _healthController.DeleteHeart();
-        //}
     }
 
     public void Add(Block blockToAdd)

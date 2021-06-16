@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class NoScale : IScalable
 {
-    public void ScaleObject(Block scalableBlock)
+    public void ScaleObject(Block scalableBlock, float duration, float scale)
     {
     }
 }

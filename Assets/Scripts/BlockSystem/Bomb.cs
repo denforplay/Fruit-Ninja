@@ -10,11 +10,11 @@ public class Bomb : Block
 
     public float ExplosionRadius => _explosionRadius;
 
-    private new void Awake()
+    private new void Start()
     {
-        base.Awake();
-        _iScalable = new Scale();
         _iRotatable = new Rotate();
+        _iScalable = new Scale();
+        base.Start();
     }
 
     public override void Cut()
@@ -38,7 +38,7 @@ public class Bomb : Block
             float colliderPoint = Mathf.Sqrt(Mathf.Pow(colliderPositionX, 2) + Mathf.Pow(colliderPositionY, 2));
             if (colliderPoint <= ExplosionRadius)
             {
-                float newExplosionSpeed = (ExplosionRadius - colliderPoint) / ExplosionRadius * +_explosionSpeed;
+                float newExplosionSpeed = (ExplosionRadius - colliderPoint) / ExplosionRadius * _explosionSpeed;
                 float xSpeed = (colliderPositionX) * newExplosionSpeed;
                 float ySpeed = (colliderPositionY) * newExplosionSpeed;
                 blockToMove.AddSpeed(new Vector3(xSpeed, ySpeed));

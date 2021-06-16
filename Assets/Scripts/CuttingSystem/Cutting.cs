@@ -70,6 +70,7 @@ public class Cutting : MonoBehaviour
                 }
 
                 block.Cut();
+                break;
             }
         }
     }

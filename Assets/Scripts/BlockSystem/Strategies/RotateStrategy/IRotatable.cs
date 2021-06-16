@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IRotatable
 {
-    void RotateObject(Block rotatingBlock);
+    void RotateObject(Block rotatingBlock, float duration);
 }

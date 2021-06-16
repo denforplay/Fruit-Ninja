@@ -101,4 +101,4 @@ MonoBehaviour:
   _blockManager: {fileID: 0}
   _bombParticle: {fileID: 6054181758175473366, guid: 2f18cab2cfd928e43b27f1520eeb91e4, type: 3}
   _explosionRadius: 10
-  _explosionSpeed: 6
+  _explosionSpeed: 2

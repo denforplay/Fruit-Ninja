@@ -9,11 +9,11 @@ public class Fruit : Block
     [SerializeField] private ParticleSystem _sliceParticleSystem;
     [SerializeField] private Color _fruitColor;
 
-    private new void Awake()
+    private new void Start()
     {
-        base.Awake();
         _iRotatable = new Rotate();
         _iScalable = new Scale();
+        base.Start();
     }
 
     private Sprite[] GenerateHalfFruitSprite()
@@ -80,5 +80,6 @@ public class Fruit : Block
         }
 
         secondPart._isNotCutted = false;
+        _blockManager.Add(secondPart);
     }
 }
