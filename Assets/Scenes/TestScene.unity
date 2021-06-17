@@ -1403,9 +1403,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: d227d8d9af404f1438b5b955b0ab83e0, type: 2}
     - target: {fileID: 1372847270261939119, guid: 8a5f07d43a91c0345920352d1673d33d, type: 3}
+      propertyPath: _heartSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3dbd45fa64c3e344e8b19b89165df5d4, type: 3}
+    - target: {fileID: 1372847270261939119, guid: 8a5f07d43a91c0345920352d1673d33d, type: 3}
       propertyPath: _popUpWindow
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1372847270261939119, guid: 8a5f07d43a91c0345920352d1673d33d, type: 3}
+      propertyPath: _noHeartSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 83229b59611290141b107b69ea927ec0, type: 3}
     - target: {fileID: 1372847270261939119, guid: 8a5f07d43a91c0345920352d1673d33d, type: 3}
       propertyPath: _spawnerManager
       value: 

@@ -1,6 +1,6 @@
 using UnityEngine;
 using TMPro;
-
+using UnityEngine.SceneManagement;
 public class ScoreController : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _scoreText;
@@ -10,7 +10,14 @@ public class ScoreController : MonoBehaviour
     {
         _player.score = 0;
         _player.maxScore = PlayerPrefs.GetInt(_playerHighScore);
-        _scoreText.text = $"<sprite=0>{_player.score}\nBest:{_player.maxScore}";
+        if (SceneManager.GetActiveScene().name == "StartScene")
+        {
+            _scoreText.text = $"High Score:\n{_player.maxScore}";
+        }
+        else
+        {
+            _scoreText.text = $"<sprite=0>{_player.score}\nBest:{_player.maxScore}";
+        }
     }
 
     public void AddPoint()
