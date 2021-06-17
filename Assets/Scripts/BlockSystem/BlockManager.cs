@@ -30,7 +30,6 @@ public class BlockManager : MonoBehaviour
             _healthController.AddHeart();
         }
 
-        DOTween.Kill(blockToRemove.transform);
     }
 
     public void Add(Block blockToAdd)

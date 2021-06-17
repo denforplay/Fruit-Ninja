@@ -25,6 +25,7 @@ public class Bomb : Block
             ExplodeCollision();
             var particle = Instantiate(_bombParticle, transform);
             particle.transform.SetParent(null);
+            Destroy(particle.gameObject, particle.main.duration);
             Destroy(gameObject);
         }
     }

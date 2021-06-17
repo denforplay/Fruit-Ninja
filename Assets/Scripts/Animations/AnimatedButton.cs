@@ -24,13 +24,13 @@ public class AnimatedButton : MonoBehaviour, IPointerUpHandler, IPointerDownHand
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        _button.transform.DOScale(_downScale, _duration);
-        _button.image.DOColor(_endColor, _duration);
+        _button.transform.DOScale(_downScale, _duration).OnComplete(() => DOTween.Kill(_button.transform));
+        _button.image.DOColor(_endColor, _duration).OnComplete(() => DOTween.Kill(_button.transform));
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        _button.transform.DOScale(_upScale, _duration);
-        _button.image.DOColor(_startColor, _duration);
+        _button.transform.DOScale(_upScale, _duration).OnComplete(() => DOTween.Kill(_button.transform));
+        _button.image.DOColor(_startColor, _duration).OnComplete(() => DOTween.Kill(_button.transform));
     }
 }

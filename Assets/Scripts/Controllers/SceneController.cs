@@ -33,7 +33,9 @@ public class SceneController : MonoBehaviour
             RectTransform thisRect = currentPopUp.GetComponent<RectTransform>();
             float posY = Camera.main.transform.position.y - thisRect.rect.width;
             background.transform.position = new Vector3(windowPos.x, posY, windowPos.z);
+            DOTween.KillAll();
             background.transform.DOMove(windowPos, 2.0f);
+
         }
     }
 }
