@@ -11,8 +11,7 @@ public class Fruit : Block
 
     private new void Start()
     {
-        _iRotatable = new Rotate();
-        _iScalable = new Scale();
+        _blockAnimator.IsAnimated = true;
         base.Start();
     }
 

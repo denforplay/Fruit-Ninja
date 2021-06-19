@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+
 public class ScoreController : MonoBehaviour
 {
     const string startSceneName = "StartScene";

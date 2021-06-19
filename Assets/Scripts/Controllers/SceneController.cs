@@ -1,7 +1,6 @@
-using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class SceneController : MonoBehaviour
 {
@@ -10,6 +9,8 @@ public class SceneController : MonoBehaviour
     [SerializeField] private SpawnerManager _spawnerManager;
     [SerializeField] private BlockManager _blockManager;
     [SerializeField] private ScoreController _scoreController;
+    [SerializeField] private HealthViewController _healthViewController;
+
     public void RestartGame()
     {
         _scoreController.Start();
@@ -34,5 +35,10 @@ public class SceneController : MonoBehaviour
             DOTween.KillAll();
             background.transform.DOMove(windowPos, 2.0f);
         }
+    }
+
+    private void OnEnable()
+    {
+        _healthViewController.AllLifesDeletedEvent += PopUpRestart;
     }
 }

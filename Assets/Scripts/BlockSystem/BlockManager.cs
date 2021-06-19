@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BlockManager : MonoBehaviour
 {
-    [SerializeField] private HealthController _healthController;
+    [SerializeField] private HealthViewController _healthViewController;
     [SerializeField] private SceneController _sceneController;
 
     public Action RemoveBlockEvent;
@@ -16,9 +16,9 @@ public class BlockManager : MonoBehaviour
         allBlocks.Remove(heartBonus);
         if (!heartBonus.IsNotCutted )
         {
-            _healthController.AddHeart();
+            _healthViewController.AddHeart();
         }
-        else if (allBlocks.Count == 1 && _healthController.HeartsCount == 0)
+        else if (_healthViewController.HeartsCount == 0 && allBlocks.Count == 0)
         {
             _sceneController.PopUpRestart();
         }
@@ -29,9 +29,9 @@ public class BlockManager : MonoBehaviour
         allBlocks.Remove(fruit);
         if (fruit.IsNotCutted)
         {
-            _healthController.DeleteHeart();
+            _healthViewController.DeleteHeart();
         }
-        else if (_healthController.HeartsCount == 0 && allBlocks.Count == 0)
+        else if (_healthViewController.HeartsCount == 0 && allBlocks.Count == 0)
         {
             _sceneController.PopUpRestart();
         }
@@ -42,9 +42,9 @@ public class BlockManager : MonoBehaviour
         allBlocks.Remove(bomb);
         if (!bomb.IsNotCutted)
         {
-            _healthController.DeleteHeart();
+            _healthViewController.DeleteHeart();
         }
-        else if (_healthController.HeartsCount == 0 && allBlocks.Count == 0)
+        else if (_healthViewController.HeartsCount == 0 && allBlocks.Count == 0)
         {
             _sceneController.PopUpRestart();
         }

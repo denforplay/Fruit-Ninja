@@ -466,7 +466,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1372847270261939119, guid: 8a5f07d43a91c0345920352d1673d33d, type: 3}
   m_PrefabInstance: {fileID: 1562859811}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1562859812}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2555631fd42e106499ce8d44520ce2d3, type: 3}
@@ -491,6 +491,10 @@ PrefabInstance:
       propertyPath: _healthController
       value: 
       objectReference: {fileID: 500645255}
+    - target: {fileID: 5514515484443646181, guid: fce391c77e14576488063d37046661fc, type: 3}
+      propertyPath: _healthViewController
+      value: 
+      objectReference: {fileID: 1562859813}
     - target: {fileID: 5514515484443646182, guid: fce391c77e14576488063d37046661fc, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -854,6 +858,7 @@ MonoBehaviour:
   _spawnerManager: {fileID: 848295934}
   _blockManager: {fileID: 0}
   _scoreController: {fileID: 1222223263}
+  _healthViewController: {fileID: 0}
 --- !u!114 &1035930354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1391,8 +1396,33 @@ PrefabInstance:
       propertyPath: _sceneController
       value: 
       objectReference: {fileID: 784175182}
+    - target: {fileID: 1372847270261939119, guid: 8a5f07d43a91c0345920352d1673d33d, type: 3}
+      propertyPath: _healthViewController
+      value: 
+      objectReference: {fileID: 1562859813}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a5f07d43a91c0345920352d1673d33d, type: 3}
+--- !u!1 &1562859812 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1372847270261939118, guid: 8a5f07d43a91c0345920352d1673d33d, type: 3}
+  m_PrefabInstance: {fileID: 1562859811}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1562859813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562859812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3efa02446bcf9d479ef415269f51826, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _heartPrefab: {fileID: 1898234961396539983, guid: b54efc2853e837c4fb7fb8551c5ceca0, type: 3}
+  _noHeartSprite: {fileID: 21300000, guid: 83229b59611290141b107b69ea927ec0, type: 3}
+  _heartSprite: {fileID: 21300000, guid: 3dbd45fa64c3e344e8b19b89165df5d4, type: 3}
+  _healthController: {fileID: 500645255}
 --- !u!1 &1596893604
 GameObject:
   m_ObjectHideFlags: 0
@@ -1969,6 +1999,10 @@ PrefabInstance:
       propertyPath: _scoreController
       value: 
       objectReference: {fileID: 1222223263}
+    - target: {fileID: 5999905481356275469, guid: 81381b3e11bca1347ae91208041cdb16, type: 3}
+      propertyPath: _healthViewController
+      value: 
+      objectReference: {fileID: 1562859813}
     - target: {fileID: 5999905481356275470, guid: 81381b3e11bca1347ae91208041cdb16, type: 3}
       propertyPath: m_Name
       value: SceneController
@@ -2054,6 +2088,10 @@ PrefabInstance:
       propertyPath: _blocksConfig.bomb
       value: 
       objectReference: {fileID: 6058686618149874616, guid: ac17cfdf6fb5243469124c67f2b37929, type: 3}
+    - target: {fileID: 6494585289558988525, guid: f3ba02ff576d8a84083799dc4e25b8be, type: 3}
+      propertyPath: _healthViewController
+      value: 
+      objectReference: {fileID: 1562859813}
     - target: {fileID: 6494585289558988525, guid: f3ba02ff576d8a84083799dc4e25b8be, type: 3}
       propertyPath: _blocksConfig.heartBonus
       value: 

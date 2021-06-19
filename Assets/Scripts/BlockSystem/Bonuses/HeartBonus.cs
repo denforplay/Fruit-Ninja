@@ -4,13 +4,10 @@ using UnityEngine;
 public class HeartBonus : Block
 {
     [SerializeField] private ParticleSystem _heartParticleCut;
-    private HealthController _healthController;
-
+    private HealthViewController _healthViewController;
     private new void Start()
     {
-        _healthController = FindObjectOfType<HealthController>();
-        _iScalable = new Scale();
-        _iRotatable = new NoRotate();
+        _healthViewController = FindObjectOfType<HealthViewController>();
         base.Start();
     }
 
@@ -21,8 +18,8 @@ public class HeartBonus : Block
             _isNotCutted = false;
             ParticleSystem particle = Instantiate(_heartParticleCut, transform);
             particle.transform.SetParent(null);
-            Heart heart = _healthController.FindEmptyHeart();
-            this.transform.DOMove(heart.transform.position, 1.0f).OnComplete(() => Destroy(gameObject));
+            Heart heart = _healthViewController.FindEmptyHeart();
+            Destroy(gameObject);
             Destroy(particle, particle.main.duration);
         }
     }
