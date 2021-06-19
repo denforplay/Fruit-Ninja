@@ -44,3 +44,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scoreText: {fileID: 0}
+  _player: {fileID: 11400000, guid: d227d8d9af404f1438b5b955b0ab83e0, type: 2}

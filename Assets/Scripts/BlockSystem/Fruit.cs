@@ -54,13 +54,9 @@ public class Fruit : Block
     private void InstantiateParticles()
     {
         _blobParticleSystem.startColor = _fruitColor;
-        ParticleSystem currentCut = Instantiate(_sliceParticleSystem, transform);
         ParticleSystem currentBlobs = Instantiate(_blobParticleSystem, transform);
         currentBlobs.transform.SetParent(null);
         currentBlobs.Play();
-        currentCut.Play();
-        currentCut.transform.SetParent(null);
-        Destroy(currentCut.gameObject, currentCut.main.duration);
         Destroy(currentBlobs.gameObject, currentBlobs.main.duration);
     }
 
@@ -81,5 +77,10 @@ public class Fruit : Block
 
         secondPart._isNotCutted = false;
         _blockManager.Add(secondPart);
+    }
+
+    private void OnDestroy()
+    {
+        _blockManager.RemoveFruit(this);
     }
 }

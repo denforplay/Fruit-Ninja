@@ -10,10 +10,8 @@ public class SceneController : MonoBehaviour
     [SerializeField] private SpawnerManager _spawnerManager;
     [SerializeField] private BlockManager _blockManager;
     [SerializeField] private ScoreController _scoreController;
-
     public void RestartGame()
     {
-
         _scoreController.Start();
         _spawnerManager.StartSpawn();
         Canvas currentPopUp = GetComponentInParent<Canvas>();
@@ -35,7 +33,6 @@ public class SceneController : MonoBehaviour
             background.transform.position = new Vector3(windowPos.x, posY, windowPos.z);
             DOTween.KillAll();
             background.transform.DOMove(windowPos, 2.0f);
-
         }
     }
 }

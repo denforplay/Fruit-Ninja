@@ -46,4 +46,8 @@ public class Bomb : Block
             }
         }
     }
+    private void OnDestroy()
+    {
+        _blockManager.RemoveBomb(this);
+    }
 }

@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bladeTrail: {fileID: 4384099512919068820, guid: 82e4e9139bca27343901b6a90b794b70, type: 3}
-  minCutVelocity: 0.025
-  _scoreController: {fileID: 0}
-  _blockManager: {fileID: 0}
+  _minCutVelocity: 0.01
+  _scoreController: {fileID: 2268960280897111052, guid: 15047107a13c0514cb640690cabde867, type: 3}
+  _blockManager: {fileID: 5514515484443646181, guid: fce391c77e14576488063d37046661fc, type: 3}

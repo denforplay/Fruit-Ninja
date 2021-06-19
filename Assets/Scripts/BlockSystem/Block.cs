@@ -4,7 +4,7 @@ using DG.Tweening;
 public abstract class Block : PhysicObject
 {
     [SerializeField] protected float _radius;
-
+    [SerializeField] BlocksAnimationConfig _blockAnimationConfig; 
     protected SpriteRenderer _spriteRenderer;
 
     public BlockManager _blockManager;
@@ -14,16 +14,16 @@ public abstract class Block : PhysicObject
     protected IScalable _iScalable;
 
     protected IRotatable _iRotatable;
-
     public float Radius => _radius;
     public bool IsNotCutted => _isNotCutted;
     public SpriteRenderer GetSpriteRenderer => _spriteRenderer;
+    
     protected void Start()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
-        int randomAnimation = Random.Range(1,4);
-        float duration = Random.Range(4.0f, 6.0f);
-        float scale = Random.Range(0.5f, 1.5f);
+        int randomAnimation = Random.Range(_blockAnimationConfig.minAnimationCount, _blockAnimationConfig.maxAnimationCount);
+        float duration = Random.Range(_blockAnimationConfig.startRandomDuration, _blockAnimationConfig.endRandomDuration);
+        float scale = Random.Range(_blockAnimationConfig.startRandomScale, _blockAnimationConfig.endRandomScale);
         switch (randomAnimation)
         {
             case 1:
@@ -51,11 +51,6 @@ public abstract class Block : PhysicObject
 
     protected void OnBecameInvisible()
     {
-        if (_blockManager!= null && _blockManager.allBlocks.Contains(this))
-        {
-            _blockManager.Remove(this);
-        }
-
         Destroy(gameObject);
         DOTween.Kill(transform);
     }

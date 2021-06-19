@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gravityScale: 0
   _radius: 1
-  _spriteRenderer: {fileID: 0}
+  _blockManager: {fileID: 5514515484443646181, guid: fce391c77e14576488063d37046661fc, type: 3}
 --- !u!212 &5585127882287033413
 SpriteRenderer:
   m_ObjectHideFlags: 0

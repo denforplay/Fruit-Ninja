@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gravityScale: 5
   _radius: 1
-  _blockManager: {fileID: 0}
+  _blockManager: {fileID: 5514515484443646181, guid: fce391c77e14576488063d37046661fc, type: 3}
   _heartParticleCut: {fileID: 4633812922737569716, guid: 190c2df0124b123489b457de57d30608, type: 3}
 --- !u!212 &1961868177216425431
 SpriteRenderer:

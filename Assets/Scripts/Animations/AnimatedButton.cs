@@ -8,9 +8,9 @@ public class AnimatedButton : MonoBehaviour, IPointerUpHandler, IPointerDownHand
 
     [SerializeField] private float _downScale = 0.7f;
 
-    [SerializeField] private float _upScale = 1.3f;
+    [SerializeField] private float _upScale = 1.0f;
 
-    [SerializeField] private float _duration = 0.5f;
+    [SerializeField] private float _duration = 0.1f;
 
     [SerializeField] private Color _endColor;
 

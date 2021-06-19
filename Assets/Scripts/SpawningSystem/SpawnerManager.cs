@@ -1,52 +1,47 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 
 public class SpawnerManager : MonoBehaviour
 {
     [SerializeField] private List<SpawnerLine> _spawnerLines;
-
     [SerializeField] private SpeedConfig _speedConfig;
-
+    [SerializeField] private BlockChanceConfig _blockChanceConfig;
     [SerializeField] private BlocksConfig _blocksConfig;
-
-    [SerializeField] private float _difficulty = 0;
-
     [SerializeField] private BlockManager _blockManager;
-
     [SerializeField] private HealthController _healthController;
-
     [SerializeField] private Cutting _cutting;
-
     [SerializeField] private Player _player;
-
-    [SerializeField] private Bomb _bomb;
-
-    [SerializeField] private HeartBonus _heartBonus;
-
-    [SerializeField] private float _bombChance = 0.5f;
-    [SerializeField] private float _heartBonusChance = 0.5f;
+    [SerializeField] private float _difficulty = 0;
 
     private float _maxDifficulty = 100f;
 
     private Coroutine _spawnerCoroutine;
-    private List<SpawnerLine> _priorityList = new List<SpawnerLine>();
     private void Start()
     {
-        FillPriority();
         StartSpawn();
     }
 
-    private void FillPriority()
+    private SpawnerLine GetSpawnerLineByPriority()
     {
+        int allLinePrioritySum = _spawnerLines.Sum(line => line.Priority);
+        int zoneRandomer = Random.Range(0, allLinePrioritySum);
+        int currentPriority = 0;
         for (int i = 0; i < _spawnerLines.Count; i++)
         {
-            for (int j = 0; j < _spawnerLines.Count - _spawnerLines[i].Priority; j++)
+            if (zoneRandomer <= currentPriority + _spawnerLines[i].Priority)
             {
-                _priorityList.Add(_spawnerLines[i]);
+                return _spawnerLines[i];
+            }
+            else
+            {
+                currentPriority += _spawnerLines[i].Priority;
             }
         }
+
+        return _spawnerLines.Last();
     }
 
     public float FindValueForCurrentDifficulty(float min, float max)
@@ -70,7 +65,8 @@ public class SpawnerManager : MonoBehaviour
         while (true)
         {
             int numberOfBlocks = (int)FindValueForCurrentDifficulty(_blocksConfig.minBlocksPackage, _blocksConfig.maxBlocksPackage);
-            StartCoroutine(SpawnBlockPackage(_priorityList[Random.Range(0, _priorityList.Count - 1)], numberOfBlocks));
+            SpawnerLine _spawnerLine = GetSpawnerLineByPriority();
+            StartCoroutine(SpawnBlockPackage(_spawnerLine, numberOfBlocks));
             _difficulty++;
             float secondsBetweenPackages = FindValueForCurrentDifficulty(_blocksConfig.maxPackageInterval, _blocksConfig.maxPackageInterval);
             yield return new WaitForSeconds(secondsBetweenPackages);
@@ -86,14 +82,14 @@ public class SpawnerManager : MonoBehaviour
             Block block;
             float bombRand = Random.Range(0f, 1f);
             float heartRand = Random.Range(0f, 1f);
-            if (bombsCount > 0 && bombRand <= _bombChance)
+            if (bombsCount > 0 && bombRand <= _blockChanceConfig._bombChance)
             {
-                block = spawnerLine.GenerateDroppingBlock(_bomb);
+                block = spawnerLine.GenerateDroppingBlock(_blocksConfig.bomb);
                 bombsCount--;
             }
-            else if (heartBonusCount > 0 && heartRand <= _heartBonusChance && _player.health < _player.maxhealth)
+            else if (heartBonusCount > 0 && heartRand <= _blockChanceConfig._heartBonusChance && _player.health < _player.maxhealth)
             {
-                block = spawnerLine.GenerateDroppingBlock(_heartBonus);
+                block = spawnerLine.GenerateDroppingBlock(_blocksConfig.heartBonus);
                 heartBonusCount--;
             }
             else

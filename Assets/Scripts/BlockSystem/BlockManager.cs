@@ -1,35 +1,53 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
 
 public class BlockManager : MonoBehaviour
 {
     [SerializeField] private HealthController _healthController;
     [SerializeField] private SceneController _sceneController;
+
+    public Action RemoveBlockEvent;
+
     public readonly List<Block> allBlocks = new List<Block>();
 
-    public void Remove(Block blockToRemove)
+    public void RemoveHeartBonus(HeartBonus heartBonus)
     {
-        allBlocks.Remove(blockToRemove);
-        Fruit fruitToRemove = blockToRemove as Fruit;
-        if (fruitToRemove != null && fruitToRemove.IsNotCutted)
-        {
-            _healthController.DeleteHeart();
-        }
-
-        Bomb bombToRemove = blockToRemove as Bomb;
-        if (bombToRemove != null && !bombToRemove.IsNotCutted)
-        {
-            _healthController.DeleteHeart();
-        }
-
-        HeartBonus heartBonusToRemove = blockToRemove as HeartBonus;
-        if (heartBonusToRemove != null && !heartBonusToRemove.IsNotCutted)
+        allBlocks.Remove(heartBonus);
+        if (!heartBonus.IsNotCutted )
         {
             _healthController.AddHeart();
         }
+        else if (allBlocks.Count == 1 && _healthController.HeartsCount == 0)
+        {
+            _sceneController.PopUpRestart();
+        }
+    }
 
+    public void RemoveFruit(Fruit fruit)
+    {
+        allBlocks.Remove(fruit);
+        if (fruit.IsNotCutted)
+        {
+            _healthController.DeleteHeart();
+        }
+        else if (_healthController.HeartsCount == 0 && allBlocks.Count == 0)
+        {
+            _sceneController.PopUpRestart();
+        }
+    }
+
+    public void RemoveBomb(Bomb bomb)
+    {
+        allBlocks.Remove(bomb);
+        if (!bomb.IsNotCutted)
+        {
+            _healthController.DeleteHeart();
+        }
+        else if (_healthController.HeartsCount == 0 && allBlocks.Count == 0)
+        {
+            _sceneController.PopUpRestart();
+        }
     }
 
     public void Add(Block blockToAdd)

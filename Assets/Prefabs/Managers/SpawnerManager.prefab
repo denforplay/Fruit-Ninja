@@ -47,17 +47,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  _blockPrefab:
-  - {fileID: 8162686248377147231, guid: bb6bbf702729a5746b9d868c07dcf524, type: 3}
-  - {fileID: 6949280670210136523, guid: bec48071516891147a8bfa394f28d45a, type: 3}
-  - {fileID: 5731466791598208017, guid: f09f43e3301c9df4faeeece077b5a3f8, type: 3}
-  - {fileID: 8162686248377147231, guid: d5c60081a59d62244bb84e026ff0a0ab, type: 3}
-  - {fileID: 8162686248377147231, guid: 966adec178dc88044918b9a21f38d652, type: 3}
-  - {fileID: 8162686248377147231, guid: c8609d1edd4807b4695804007a90b9fa, type: 3}
   _speedConfig:
     speedMin: 5
     speedMax: 10
   _blocksConfig:
+    blockPrefab: []
     minBlocksPackage: 2
     maxBlocksPackage: 5
     minPackageInterval: 2.5
@@ -65,4 +59,11 @@ MonoBehaviour:
     minBlockInterval: 0.2
     maxBlockInterval: 0.5
   _difficulty: 1
-  _blockManager: {fileID: 0}
+  _blockManager: {fileID: 5514515484443646181, guid: fce391c77e14576488063d37046661fc, type: 3}
+  _healthController: {fileID: 1372847270261939119, guid: 8a5f07d43a91c0345920352d1673d33d, type: 3}
+  _cutting: {fileID: 5241512073747686394, guid: f87dae8caf5ef1240bd78bff81bc29b4, type: 3}
+  _player: {fileID: 11400000, guid: d227d8d9af404f1438b5b955b0ab83e0, type: 2}
+  _bomb: {fileID: 6058686618149874616, guid: ac17cfdf6fb5243469124c67f2b37929, type: 3}
+  _heartBonus: {fileID: 7093430291794539460, guid: 620fa298ea5699947afa3514bff07c1d, type: 3}
+  _bombChance: 0.5
+  _heartBonusChance: 0.5

@@ -1,15 +1,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 
 public class HealthController : MonoBehaviour
 {
-    [SerializeField] private Canvas _popUpWindow;
+    [SerializeField] private BlockManager _blockManager;
     [SerializeField] private Heart _heartPrefab;
     [SerializeField] private Sprite _noHeartSprite;
     [SerializeField] private Sprite _heartSprite;
     [SerializeField] private SceneController _sceneController;
     [SerializeField] private Player _player;
+
     private List<Heart> _hearts;
 
     public int HeartsCount => _hearts.Count;
@@ -85,4 +87,14 @@ public class HealthController : MonoBehaviour
         return null;
     }
 
+    private void OnEnable()
+    {
+
+        _blockManager.RemoveBlockEvent += DeleteHeart;
+    }
+
+    private void OnDisable()
+    {
+        _blockManager.RemoveBlockEvent -= DeleteHeart;
+    }
 }

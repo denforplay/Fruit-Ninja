@@ -43,5 +43,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2555631fd42e106499ce8d44520ce2d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _blockManager: {fileID: 5514515484443646181, guid: fce391c77e14576488063d37046661fc, type: 3}
+  _popUpWindow: {fileID: 2063633711651645108, guid: 8d8dacd24b3ff8f40b5f9f986f06b492, type: 3}
   _heartPrefab: {fileID: 1898234961396539983, guid: b54efc2853e837c4fb7fb8551c5ceca0, type: 3}
-  _noHeartPrefab: {fileID: 21300000, guid: 83229b59611290141b107b69ea927ec0, type: 3}
+  _noHeartSprite: {fileID: 21300000, guid: 83229b59611290141b107b69ea927ec0, type: 3}
+  _heartSprite: {fileID: 21300000, guid: 3dbd45fa64c3e344e8b19b89165df5d4, type: 3}
+  _sceneController: {fileID: 5999905481356275469, guid: 81381b3e11bca1347ae91208041cdb16, type: 3}
+  _player: {fileID: 11400000, guid: d227d8d9af404f1438b5b955b0ab83e0, type: 2}
