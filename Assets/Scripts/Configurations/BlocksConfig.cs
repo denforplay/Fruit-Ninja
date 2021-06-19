@@ -13,4 +13,5 @@ public class BlocksConfig
     public float maxPackageInterval = 5.0f;
     public float minBlockInterval = 0.2f;
     public float maxBlockInterval = 0.5f;
+    public float heartSpeed = 1.2f;
 }

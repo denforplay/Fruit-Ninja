@@ -100,7 +100,16 @@ public class SpawnerManager : MonoBehaviour
            
             float horizontalSpeed = FindValueForCurrentDifficulty(_speedConfig.speedMin, _speedConfig.speedMax);
             float verticalSpeed = horizontalSpeed * Random.Range(1f, 1.5f);
-            block.AddSpeed(new Vector3(horizontalSpeed, verticalSpeed));
+            if (block is HeartBonus)
+            {
+                Vector3 heartSpeed = new Vector3(horizontalSpeed * _blocksConfig.heartSpeed, verticalSpeed * _blocksConfig.heartSpeed);
+                block.AddSpeed(heartSpeed);
+            }
+            else
+            {
+                block.AddSpeed(new Vector3(horizontalSpeed, verticalSpeed));
+            }
+
             if (block.transform.position.x > Camera.main.transform.position.x && block.GetSpeed().x > 0)
             {
                 block.ReverseHorizontalSpeed();
