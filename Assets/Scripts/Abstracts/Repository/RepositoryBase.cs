@@ -15,43 +15,43 @@ public class RepositoryBase : MonoBehaviour
         this._sceneConfig = sceneConfig;
     }
 
-    public void CreateAllInteractors()
+    public void CreateAllRepositories()
     {
         this._repositoriesMap = this._sceneConfig.CreateAllRepositories();
     }
 
-    public Coroutine InitializeAllInteractors()
+    public Coroutine InitializeAllRepositories()
     {
-        return Coroutines.StartRoutine(InitializeAllInteractorsRoutine());
+        return Coroutines.StartRoutine(InitializeAllrepositoriesRoutine());
     }
 
-    private IEnumerator InitializeAllInteractorsRoutine()
+    private IEnumerator InitializeAllrepositoriesRoutine()
     {
-        IRepository[] allInteractors = this._repositoriesMap.Values.ToArray();
+        IRepository[] allRepositories = this._repositoriesMap.Values.ToArray();
 
-        foreach (IInteractor interactor in allInteractors)
+        foreach (IInteractor repository in allRepositories)
         {
-            if (!interactor.IsInitialized)
+            if (!repository.IsInitialized)
             {
-                yield return interactor.InitializeAsync();
+                yield return repository.InitializeAsync();
             }
         }
     }
 
-    public void StartAllInteractor()
+    public void StartAllRepositories()
     {
-        IRepository[] allInteractors = this._repositoriesMap.Values.ToArray();
+        IRepository[] allRepositories = this._repositoriesMap.Values.ToArray();
 
-        foreach (IInteractor interactor in allInteractors)
+        foreach (IRepository repository in allRepositories)
         {
-            if (!interactor.IsInitialized)
+            if (!repository.IsInitialized)
             {
-                interactor.Start();
+                repository.Start();
             }
         }
     }
 
-    public T GetInteractor<T>() where T : IInteractor
+    public T GetRepository<T>() where T : IRepository
     {
         var type = typeof(T);
         var founded = _repositoriesMap.TryGetValue(type, out IRepository resultInteractor);
@@ -60,30 +60,30 @@ public class RepositoryBase : MonoBehaviour
             return (T)resultInteractor;
         }
 
-        foreach (IInteractor interactor in _repositoriesMap.Values)
+        foreach (IRepository repository in _repositoriesMap.Values)
         {
-            if (interactor is T)
+            if (repository is T)
             {
-                return (T)interactor;
+                return (T)repository;
             }
         }
 
         throw new ArgumentException();
     }
 
-    public IEnumerable<T> GetInteractors<T>() where T : IInteractor
+    public IEnumerable<T> GetRepositories<T>() where T : IRepository
     {
-        var allInteractors = this._repositoriesMap.Values;
-        var requiredInteractors = new HashSet<T>();
+        var allRepositories = this._repositoriesMap.Values;
+        var requiredRepositories = new HashSet<T>();
 
-        foreach (IRepository interactor in _repositoriesMap.Values)
+        foreach (IRepository repository in allRepositories)
         {
-            if (interactor is T)
+            if (repository is T)
             {
-                requiredInteractors.Add((T)interactor);
+                requiredRepositories.Add((T)repository);
             }
         }
 
-        return requiredInteractors;
+        return requiredRepositories;
     }
 }

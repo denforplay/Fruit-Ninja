@@ -17,6 +17,6 @@ public interface IScene
 
     T GetRepository<T>() where T : IRepository;
     IEnumerable<T> GetRepositories<T>() where T : IRepository;
-    T GetInteractor<T>() where T : IRepository;
+    T GetInteractor<T>() where T : IInteractor;
     IEnumerable<T> GetInteractors<T>() where T : IInteractor;
 }

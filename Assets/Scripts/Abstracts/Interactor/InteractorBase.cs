@@ -75,8 +75,7 @@ public class InteractorBase
     {
         var allInteractors = this._interactorsMap.Values;
         var requiredInteractors = new HashSet<T>();
-
-        foreach (IInteractor interactor in _interactorsMap.Values)
+        foreach (IInteractor interactor in allInteractors)
         {
             if (interactor is T)
             {
