@@ -16,7 +16,7 @@ public class ScoreController : MonoBehaviour
     {
         _player.score = 0;
         _player.maxScore = PlayerPrefs.GetInt(_playerHighScore);
-        if (SceneManager.GetActiveScene().name == startSceneName)
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name == startSceneName)
         {
             _scoreText.text = string.Format(_highScoreFormat, _player.maxScore);
         }

@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -32,13 +33,18 @@ public class SceneController : MonoBehaviour
             RectTransform thisRect = currentPopUp.GetComponent<RectTransform>();
             float posY = Camera.main.transform.position.y - thisRect.rect.width;
             background.transform.position = new Vector3(windowPos.x, posY, windowPos.z);
-            DOTween.KillAll();
-            background.transform.DOMove(windowPos, 2.0f);
+            background.transform.DOMove(windowPos, 2.0f).OnComplete(() => DOTween.Kill(background.transform));
         }
     }
 
     private void OnEnable()
     {
-        _healthViewController.AllLifesDeletedEvent += PopUpRestart;
+        try
+        {
+            _healthViewController.AllLifesDeletedEvent += PopUpRestart;
+        }
+        catch(NullReferenceException)
+        { 
+        }
     }
 }

@@ -856,7 +856,7 @@ MonoBehaviour:
   _popUpWindow: {fileID: 1635728941}
   _cutting: {fileID: 1452816368}
   _spawnerManager: {fileID: 848295934}
-  _blockManager: {fileID: 0}
+  _blockManager: {fileID: 252160909}
   _scoreController: {fileID: 1222223263}
   _healthViewController: {fileID: 0}
 --- !u!114 &1035930354
