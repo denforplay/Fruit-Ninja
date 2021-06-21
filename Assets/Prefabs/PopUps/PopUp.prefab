@@ -151,6 +151,7 @@ MonoBehaviour:
   _spawnerManager: {fileID: 0}
   _blockManager: {fileID: 0}
   _scoreController: {fileID: 0}
+  _healthViewController: {fileID: 0}
 --- !u!1 &2063633711941263233
 GameObject:
   m_ObjectHideFlags: 0
@@ -163,7 +164,6 @@ GameObject:
   - component: {fileID: 8299768188391073531}
   - component: {fileID: 9216751542894061433}
   - component: {fileID: 2813183327127507376}
-  - component: {fileID: 2063633711941263239}
   m_Layer: 5
   m_Name: Start
   m_TagString: Untagged
@@ -273,7 +273,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2063633711941263239}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: SceneHandler, Assembly-CSharp
         m_MethodName: OpenMenuScene
         m_Mode: 1
@@ -285,19 +285,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &2063633711941263239
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2063633711941263233}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ddee6d33070d784eb3b6b1709eebfe4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _fader: {fileID: 0}
 --- !u!1 &3906262467937646959
 GameObject:
   m_ObjectHideFlags: 0

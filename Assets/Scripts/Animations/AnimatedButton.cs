@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using DG.Tweening;
-public class AnimatedButton : MonoBehaviour, IPointerUpHandler, IPointerDownHandler
+public class AnimatedButton : MonoBehaviour, IPointerUpHandler, IPointerDownHandler, IPointerClickHandler
 {
     private Button _button;
 
@@ -32,5 +32,9 @@ public class AnimatedButton : MonoBehaviour, IPointerUpHandler, IPointerDownHand
     {
         _button.transform.DOScale(_upScale, _duration).OnComplete(() => DOTween.Kill(_button.transform));
         _button.image.DOColor(_startColor, _duration).OnComplete(() => DOTween.Kill(_button.transform));
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
     }
 }
