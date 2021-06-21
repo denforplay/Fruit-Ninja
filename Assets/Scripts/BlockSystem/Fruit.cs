@@ -6,7 +6,7 @@ public class Fruit : Block
     private const float PIXEL_PER_UNIT = 50;
 
     [SerializeField] private ParticleSystem _blobParticleSystem;
-    [SerializeField] private ParticleSystem _sliceParticleSystem;
+    [SerializeField] private ParticleSystem _juiceParticleSystem;
     [SerializeField] private Color _fruitColor;
 
     private new void Start()
@@ -52,11 +52,17 @@ public class Fruit : Block
 
     private void InstantiateParticles()
     {
-        _blobParticleSystem.startColor = _fruitColor;
-        ParticleSystem currentBlobs = Instantiate(_blobParticleSystem, transform);
-        currentBlobs.transform.SetParent(null);
-        currentBlobs.Play();
-        Destroy(currentBlobs.gameObject, currentBlobs.main.duration);
+        SpawnParticle(_blobParticleSystem);
+        SpawnParticle(_juiceParticleSystem);
+    }
+    
+    private void SpawnParticle(ParticleSystem _particle)
+    {
+        _particle.startColor = _fruitColor;
+        ParticleSystem current = Instantiate(_particle, transform);
+        current.transform.SetParent(null);
+        current.Play();
+        Destroy(current.gameObject, current.main.duration);
     }
 
     private void InstantiateRightFruitPart(Sprite rightPart)

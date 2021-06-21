@@ -48,7 +48,7 @@ MonoBehaviour:
   _radius: 1.8
   _blockManager: {fileID: 0}
   _blobParticleSystem: {fileID: 7495872335236418906, guid: bb1da03d38574bf4db95c0d3cd9188a1, type: 3}
-  _sliceParticleSystem: {fileID: 8277034520319086632, guid: efee232bea11aac41acf11b249192f28, type: 3}
+  _juiceParticleSystem: {fileID: 1332750311383062985, guid: 133846a3acf2da64093bde9651614546, type: 3}
   _fruitColor: {r: 1, g: 0.7185301, b: 0, a: 1}
 --- !u!212 &4263216366317769736
 SpriteRenderer:
