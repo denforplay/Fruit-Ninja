@@ -12,12 +12,13 @@ public class SceneController : MonoBehaviour
     [SerializeField] private ScoreController _scoreController;
     [SerializeField] private HealthViewController _healthViewController;
 
+    Vector3 _startPosition;
+    Canvas _currentPopUp;
     public void RestartGame()
     {
+        Destroy(_currentPopUp.gameObject);
         _scoreController.Start();
         _spawnerManager.StartSpawn();
-        Canvas currentPopUp = GetComponentInParent<Canvas>();
-        Destroy(currentPopUp.gameObject);
     }
 
     public void PopUpRestart()
@@ -26,13 +27,14 @@ public class SceneController : MonoBehaviour
         _cutting.BreakGame();
         if (_blockManager.allBlocks.Count == 0)
         {
-            Canvas currentPopUp = Instantiate(_popUpWindow, transform);
-            currentPopUp.gameObject.SetActive(true);
-            Image background = currentPopUp.GetComponentInChildren<Image>();
-            Vector3 windowPos = currentPopUp.transform.position;
-            RectTransform thisRect = currentPopUp.GetComponent<RectTransform>();
+            _currentPopUp = Instantiate(_popUpWindow, transform);
+            _currentPopUp.gameObject.SetActive(true);
+            Image background = _currentPopUp.GetComponentInChildren<Image>();
+            Vector3 windowPos = _currentPopUp.transform.position;
+            RectTransform thisRect = _currentPopUp.GetComponent<RectTransform>();
             float posY = Camera.main.transform.position.y - thisRect.rect.width;
-            background.transform.position = new Vector3(windowPos.x, posY, windowPos.z);
+            _startPosition = new Vector3(windowPos.x, posY, windowPos.z);
+            background.transform.position = _startPosition;
             background.transform.DOMove(windowPos, 2.0f).OnComplete(() => DOTween.Kill(background.transform));
         }
     }
@@ -43,8 +45,8 @@ public class SceneController : MonoBehaviour
         {
             _healthViewController.AllLifesDeletedEvent += PopUpRestart;
         }
-        catch(NullReferenceException)
-        { 
+        catch (NullReferenceException)
+        {
         }
     }
 }

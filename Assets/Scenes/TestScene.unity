@@ -855,24 +855,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2063633711596412421, guid: 8d8dacd24b3ff8f40b5f9f986f06b492, type: 3}
   m_PrefabInstance: {fileID: 1488753190}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1035930349
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1035930348}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e25336c75b06067428110795daa5cf83, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _popUpWindow: {fileID: 1635728941}
-  _cutting: {fileID: 1452816368}
-  _spawnerManager: {fileID: 848295934}
-  _blockManager: {fileID: 252160909}
-  _scoreController: {fileID: 1222223263}
-  _healthViewController: {fileID: 0}
 --- !u!114 &1035930354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1190,7 +1172,7 @@ PrefabInstance:
     - target: {fileID: 3479746786767600055, guid: 8d8dacd24b3ff8f40b5f9f986f06b492, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1035930349}
+      objectReference: {fileID: 784175182}
     - target: {fileID: 3479746786767600055, guid: 8d8dacd24b3ff8f40b5f9f986f06b492, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: RestartGame
@@ -1323,8 +1305,7 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2063633711596412426, guid: 8d8dacd24b3ff8f40b5f9f986f06b492, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d8dacd24b3ff8f40b5f9f986f06b492, type: 3}
 --- !u!1001 &1562859811
 PrefabInstance:

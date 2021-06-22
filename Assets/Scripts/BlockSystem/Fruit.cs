@@ -21,8 +21,8 @@ public class Fruit : Block
         {
             _isNotCutted = false;
             Texture2D thisTexture = _spriteRenderer.sprite.texture;
-            float helperRange = thisTexture.width / Random.Range(7, 12);
-            float randomXPos = Random.Range(0 + helperRange, thisTexture.width - helperRange);
+            float helperRange = thisTexture.width / Random.Range(4, 10);
+            float randomXPos = Random.Range(thisTexture.width / 2 - helperRange, thisTexture.width/2 + helperRange);
 
             float rightPivot = (thisTexture.width - randomXPos) / thisTexture.width;
             float leftPivot = 1.0f - rightPivot;
