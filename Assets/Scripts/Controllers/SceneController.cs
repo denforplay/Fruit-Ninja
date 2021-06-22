@@ -11,13 +11,14 @@ public class SceneController : MonoBehaviour
     [SerializeField] private BlockManager _blockManager;
     [SerializeField] private ScoreController _scoreController;
     [SerializeField] private HealthViewController _healthViewController;
+    [SerializeField] private float _duration = 1f;
 
     Vector3 _startPosition;
     Canvas _currentPopUp;
     public void RestartGame()
     {
         Image background = _currentPopUp.GetComponentInChildren<Image>();
-        background.transform.DOMove(_startPosition, 1f).OnComplete(() =>
+        background.transform.DOMove(_startPosition, _duration).OnComplete(() =>
         {
             Destroy(_currentPopUp.gameObject);
             _scoreController.Start();
@@ -40,7 +41,7 @@ public class SceneController : MonoBehaviour
             float posY = Camera.main.transform.position.y - thisRect.rect.width;
             _startPosition = new Vector3(windowPos.x, posY, windowPos.z);
             background.transform.position = _startPosition;
-            background.transform.DOMove(windowPos, 2.0f).OnComplete(() => DOTween.Kill(background.transform));
+            background.transform.DOMove(windowPos, _duration).OnComplete(() => DOTween.Kill(background.transform));
         }
     }
 
