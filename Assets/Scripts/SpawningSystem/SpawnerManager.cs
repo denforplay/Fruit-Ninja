@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
 
 
@@ -15,11 +16,11 @@ public class SpawnerManager : MonoBehaviour
     [SerializeField] private Cutting _cutting;
     [SerializeField] private Player _player;
     [SerializeField] private float _difficulty = 0;
-
     private float _maxDifficulty = 100f;
-
     private Coroutine _spawnerCoroutine;
-    private void Start()
+
+
+    public void StartGame()
     {
         StartSpawn();
     }
