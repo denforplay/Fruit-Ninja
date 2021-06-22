@@ -16,9 +16,14 @@ public class SceneController : MonoBehaviour
     Canvas _currentPopUp;
     public void RestartGame()
     {
-        Destroy(_currentPopUp.gameObject);
-        _scoreController.Start();
-        _spawnerManager.StartSpawn();
+        Image background = _currentPopUp.GetComponentInChildren<Image>();
+        background.transform.DOMove(_startPosition, 1f).OnComplete(() =>
+        {
+            Destroy(_currentPopUp.gameObject);
+            _scoreController.Start();
+            _spawnerManager.StartSpawn();
+        });
+
     }
 
     public void PopUpRestart()
