@@ -717,6 +717,7 @@ GameObject:
   - component: {fileID: 1219801102}
   - component: {fileID: 1219801101}
   - component: {fileID: 1219801104}
+  - component: {fileID: 1219801100}
   m_Layer: 5
   m_Name: StartGame_Button
   m_TagString: Untagged
@@ -744,6 +745,20 @@ RectTransform:
   m_AnchoredPosition: {x: 38.4, y: 96.6001}
   m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1219801100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1219801098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1323eea9150e624888e957232c9c1c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fader: {fileID: 659822891}
+  _duration: 2
 --- !u!114 &1219801101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -788,8 +803,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 818335918}
-        m_TargetAssemblyTypeName: SceneHandler, Assembly-CSharp
+      - m_Target: {fileID: 1219801100}
+        m_TargetAssemblyTypeName: OpenGameSceneButton, Assembly-CSharp
         m_MethodName: OpenGameScene
         m_Mode: 1
         m_Arguments:
