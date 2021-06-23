@@ -53,8 +53,9 @@ public class HealthViewController : MonoBehaviour
         _hearts = new List<Heart>();
         for (int i = 1; i <= _healthController.PlayerMaxHealth; i++)
         {
+            float helpRange = (float)Screen.width / (float)Screen.height * Camera.main.orthographicSize;
             Heart heart = Instantiate(_heartPrefab);
-            float xPos = Camera.main.transform.position.x + Camera.main.orthographicSize * 2 - 3 * heart.Radius * i;
+            float xPos = Camera.main.transform.position.x + helpRange - heart.Radius * i;
             float yPos = Camera.main.transform.position.y + Camera.main.orthographicSize - heart.Radius;
             Vector3 heartPosition = new Vector3(xPos, yPos);
             heart.transform.position = heartPosition;
