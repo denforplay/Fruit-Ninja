@@ -1,6 +1,8 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
+using UnityEngine.UI;
 
 public class ScoreController : MonoBehaviour
 {
@@ -22,6 +24,7 @@ public class ScoreController : MonoBehaviour
         }
         else
         {
+            var position = _scoreText.transform.position;
             _scoreText.text = string.Format(_highBestScoreFormat, _player.score, _player.maxScore);
         }
     }

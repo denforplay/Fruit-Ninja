@@ -2079,7 +2079,7 @@ PrefabInstance:
       objectReference: {fileID: 7093430291794539460, guid: 620fa298ea5699947afa3514bff07c1d, type: 3}
     - target: {fileID: 6494585289558988525, guid: f3ba02ff576d8a84083799dc4e25b8be, type: 3}
       propertyPath: _blocksConfig.heartSpeed
-      value: 1.3
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6494585289558988525, guid: f3ba02ff576d8a84083799dc4e25b8be, type: 3}
       propertyPath: _spawnerLines.Array.data[0]
@@ -2093,6 +2093,14 @@ PrefabInstance:
       propertyPath: _spawnerLines.Array.data[2]
       value: 
       objectReference: {fileID: 1085398535}
+    - target: {fileID: 6494585289558988525, guid: f3ba02ff576d8a84083799dc4e25b8be, type: 3}
+      propertyPath: _blockChanceConfig._bombChance
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6494585289558988525, guid: f3ba02ff576d8a84083799dc4e25b8be, type: 3}
+      propertyPath: _blocksConfig.maxBlockInterval
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 6494585289558988525, guid: f3ba02ff576d8a84083799dc4e25b8be, type: 3}
       propertyPath: _blocksConfig.maxBlocksPackage
       value: 7
@@ -2122,6 +2130,14 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6494585289558988525, guid: f3ba02ff576d8a84083799dc4e25b8be, type: 3}
+      propertyPath: _blocksConfig.bonusBlocks.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6494585289558988525, guid: f3ba02ff576d8a84083799dc4e25b8be, type: 3}
+      propertyPath: _blocksConfig.bonusChances.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6494585289558988525, guid: f3ba02ff576d8a84083799dc4e25b8be, type: 3}
       propertyPath: _blocksConfig.blockPrefab.Array.data[0]
       value: 
       objectReference: {fileID: 8162686248377147231, guid: bb6bbf702729a5746b9d868c07dcf524, type: 3}
@@ -2145,6 +2161,14 @@ PrefabInstance:
       propertyPath: _blocksConfig.blockPrefab.Array.data[5]
       value: 
       objectReference: {fileID: 5731466791598208017, guid: f09f43e3301c9df4faeeece077b5a3f8, type: 3}
+    - target: {fileID: 6494585289558988525, guid: f3ba02ff576d8a84083799dc4e25b8be, type: 3}
+      propertyPath: _blocksConfig.bonusBlocks.Array.data[0]
+      value: 
+      objectReference: {fileID: 6392509836594583175, guid: b90aa407b84b1a3429518e785dc42c46, type: 3}
+    - target: {fileID: 6494585289558988525, guid: f3ba02ff576d8a84083799dc4e25b8be, type: 3}
+      propertyPath: _blocksConfig.bonusChances.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6494585289558988526, guid: f3ba02ff576d8a84083799dc4e25b8be, type: 3}
       propertyPath: m_Name
       value: SpawnerManager

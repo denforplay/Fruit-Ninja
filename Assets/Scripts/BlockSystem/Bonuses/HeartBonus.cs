@@ -18,9 +18,9 @@ public class HeartBonus : Block
             _isNotCutted = false;
             ParticleSystem particle = Instantiate(_heartParticleCut, transform);
             particle.transform.SetParent(null);
-            Heart heart = _healthViewController.FindEmptyHeart();
-            Destroy(gameObject);
             Destroy(particle, particle.main.duration);
+            Heart heart = _healthViewController.FindEmptyHeart();
+            transform.DOMove(heart.transform.position, 0.5f).OnComplete(() => Destroy(gameObject));
         }
     }
 

@@ -7,6 +7,7 @@ public class PhysicObject : MonoBehaviour
     private Vector3 _speed;
     private float _topCameraPoint;
 
+
     protected void Awake()
     {
         _gravityAcceleration.y = _gravityScale;
@@ -22,6 +23,10 @@ public class PhysicObject : MonoBehaviour
     {
         while (transform.position.y >= _topCameraPoint && _speed.y > 0)
         {
+            if (_gravityAcceleration.y == 0)
+            {
+                _gravityAcceleration = new Vector3(0, _gravityScale, 0);
+            }
             _speed -= _gravityAcceleration * Time.deltaTime;
         }
 
@@ -38,9 +43,34 @@ public class PhysicObject : MonoBehaviour
     {
         _speed.x*=-1;
     }
+    
+    public void ReveseVerticalSpeed()
+    {
+        _speed.y *= -1;
+    }
+
+    public void SetSpeed(Vector3 speedToSet)
+    {
+        _speed = speedToSet;
+    }
 
     public Vector3 GetSpeed()
     {
         return _speed;
     }
+
+    public void DisableGravity()
+    {
+        _gravityAcceleration = Vector3.zero;
+    }
+
+    public void EnableGravity()
+    {
+        _gravityAcceleration = new Vector3(0, _gravityScale, 0);
+    }
+
+    public void DisableSpeed()
+    {
+        _speed = Vector3.zero;
+    }    
 }

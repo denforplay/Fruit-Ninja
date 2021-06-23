@@ -9,7 +9,6 @@ public class SpawnerManager : MonoBehaviour
 {
     [SerializeField] private List<SpawnerLine> _spawnerLines;
     [SerializeField] private SpeedConfig _speedConfig;
-    [SerializeField] private BlockChanceConfig _blockChanceConfig;
     [SerializeField] private BlocksConfig _blocksConfig;
     [SerializeField] private BlockManager _blockManager;
     [SerializeField] private HealthViewController _healthViewController;
@@ -76,22 +75,30 @@ public class SpawnerManager : MonoBehaviour
 
     private IEnumerator SpawnBlockPackage(SpawnerLine spawnerLine, int blocksCount)
     {
-        int bombsCount = Random.Range(1, blocksCount / 2);
-        int heartBonusCount = Random.Range(1, blocksCount / 2);
+        int bonusCount = Random.Range(1, blocksCount / 2);
         while (blocksCount > 0)
         {
             Block block;
-            float bombRand = Random.Range(0f, 1f);
-            float heartRand = Random.Range(0f, 1f);
-            if (bombsCount > 0 && bombRand <= _blockChanceConfig._bombChance)
+            float bonusRandom = Random.Range(0f, 1f);
+            int bonusRandomIndex = Random.Range(0, _blocksConfig.bonusBlocks.Count);
+            Block randomBonus = _blocksConfig.bonusBlocks[bonusRandomIndex];
+            if (bonusRandom <= _blocksConfig.bonusChances[bonusRandomIndex] && bonusCount > 0)
             {
-                block = spawnerLine.GenerateDroppingBlock(_blocksConfig.bomb);
-                bombsCount--;
-            }
-            else if (heartBonusCount > 0 && heartRand <= _blockChanceConfig._heartBonusChance && _player.health < _player.maxhealth)
-            {
-                block = spawnerLine.GenerateDroppingBlock(_blocksConfig.heartBonus);
-                heartBonusCount--;
+                if (randomBonus != (randomBonus as HeartBonus))
+                {
+                    block = spawnerLine.GenerateDroppingBlock(randomBonus);
+                    bonusCount--;
+                }
+                else if (_player.health < _player.maxhealth)
+                {
+                    block = spawnerLine.GenerateDroppingBlock(randomBonus);
+                    bonusCount--;
+                }
+                else
+                {
+                    Block randomFruit = _blocksConfig.blockPrefab[Random.Range(0, _blocksConfig.blockPrefab.Count)];
+                    block = spawnerLine.GenerateDroppingBlock(randomFruit);
+                }
             }
             else
             {

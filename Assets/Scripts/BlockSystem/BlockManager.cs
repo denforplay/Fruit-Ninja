@@ -11,6 +11,11 @@ public class BlockManager : MonoBehaviour
 
     public readonly List<Block> allBlocks = new List<Block>();
 
+    public void RemoveMagnitBonus(MagnitBonus magnitBonus)
+    {
+        allBlocks.Remove(magnitBonus);
+    }
+
     public void RemoveHeartBonus(HeartBonus heartBonus)
     {
         allBlocks.Remove(heartBonus);
