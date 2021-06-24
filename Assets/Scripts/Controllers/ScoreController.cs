@@ -12,6 +12,9 @@ public class ScoreController : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI _scoreText;
     [SerializeField] private Player _player;
+    [SerializeField] private int _pointsToAdd;
+    [SerializeField] private TextMesh _scorePopUp;
+    [SerializeField] private float _duration = 2.0f;
 
     private string _playerHighScore = "HighScore";
     public void Start()
@@ -29,9 +32,14 @@ public class ScoreController : MonoBehaviour
         }
     }
 
-    public void AddPoint()
+    public void AddPoint(Block block)
     {
-        _player.score++;
+        _player.score += block.GetCost;
+        var scorePopUp = Instantiate(_scorePopUp);
+        scorePopUp.transform.position = block.transform.position;
+        scorePopUp.text = $"{block.GetCost}";
+        DOTween.ToAlpha(() => scorePopUp.color, x => scorePopUp.color = x, 0, _duration);
+        Destroy(scorePopUp.gameObject, _duration);
         if (_player.score >= PlayerPrefs.GetInt(_playerHighScore))
         {
             _player.maxScore = _player.score;

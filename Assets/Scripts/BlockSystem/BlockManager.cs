@@ -14,6 +14,11 @@ public class BlockManager : MonoBehaviour
     public void RemoveMagnitBonus(MagnitBonus magnitBonus)
     {
         allBlocks.Remove(magnitBonus);
+
+        if (_healthViewController.HeartsCount == 0 && allBlocks.Count == 0)
+        {
+            _sceneController.PopUpRestart();
+        }
     }
 
     public void RemoveHeartBonus(HeartBonus heartBonus)
@@ -50,6 +55,16 @@ public class BlockManager : MonoBehaviour
             _healthViewController.DeleteHeart();
         }
         else if (_healthViewController.HeartsCount == 0 && allBlocks.Count == 0)
+        {
+            _sceneController.PopUpRestart();
+        }
+    }
+
+    public void RemoveFreezeBonus(FreezeBonus freezeBonus)
+    {
+        allBlocks.Remove(freezeBonus);
+
+        if (_healthViewController.HeartsCount == 0 && allBlocks.Count == 0)
         {
             _sceneController.PopUpRestart();
         }

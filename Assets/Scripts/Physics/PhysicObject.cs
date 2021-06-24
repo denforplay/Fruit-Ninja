@@ -44,7 +44,7 @@ public class PhysicObject : MonoBehaviour
         _speed.x*=-1;
     }
     
-    public void ReveseVerticalSpeed()
+    public void ReverseVerticalSpeed()
     {
         _speed.y *= -1;
     }
@@ -72,5 +72,17 @@ public class PhysicObject : MonoBehaviour
     public void DisableSpeed()
     {
         _speed = Vector3.zero;
-    }    
+    }
+
+    public void SlowObject(float divider)
+    {
+        _speed /= divider;
+        _gravityAcceleration /= divider;
+    }
+
+    public void NormalizeObject(float divider)
+    {
+        _speed *= divider;
+        _gravityAcceleration *= divider;
+    }
 }

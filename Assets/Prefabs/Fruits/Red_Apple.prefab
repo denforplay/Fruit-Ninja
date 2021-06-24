@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gravityScale: 5
   _radius: 1.9
+  _scoreCost: 5
   _blockManager: {fileID: 0}
   _blobParticleSystem: {fileID: 7495872335236418906, guid: bb1da03d38574bf4db95c0d3cd9188a1, type: 3}
   _juiceParticleSystem: {fileID: 1332750311383062985, guid: 133846a3acf2da64093bde9651614546, type: 3}

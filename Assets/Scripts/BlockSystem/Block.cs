@@ -4,6 +4,7 @@ using DG.Tweening;
 public abstract class Block : PhysicObject
 {
     [SerializeField] protected float _radius;
+    [SerializeField] private int _scoreCost;
 
     protected SpriteRenderer _spriteRenderer;
     protected bool _isNotCutted = true;
@@ -13,7 +14,9 @@ public abstract class Block : PhysicObject
     public float Radius => _radius;
     public bool IsNotCutted => _isNotCutted;
     public SpriteRenderer GetSpriteRenderer => _spriteRenderer;
-    
+    public bool isSlowed = false;
+    public int GetCost => _scoreCost;
+
     protected void Start()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();

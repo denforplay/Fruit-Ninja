@@ -66,7 +66,7 @@ public class Cutting : MonoBehaviour
             {
                 if (block is Fruit && block.IsNotCutted)
                 {
-                    _scoreController.AddPoint();
+                    _scoreController.AddPoint(block);
                 }
 
                 block.Cut();

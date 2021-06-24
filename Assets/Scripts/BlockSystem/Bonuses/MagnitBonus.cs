@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
 
 public class MagnitBonus : Block
 {
@@ -24,7 +21,7 @@ public class MagnitBonus : Block
             DisableAllBlocksGravity();
             this.DisableGravity();
             this.DisableSpeed();
-            Destroy(particle, particle.main.duration);
+            Destroy(particle.gameObject, particle.main.duration);
             Destroy(this.gameObject, particle.main.duration);
         }
     }
@@ -40,24 +37,14 @@ public class MagnitBonus : Block
                 float deltaY = magnitePosition.y - blockPosition.y;
                 float deltaX = magnitePosition.x - blockPosition.x;
                 float tgalpha = deltaY / deltaX;
-                if (block.GetSpeed().x > 0 && deltaX < -Radius)
+                if (block.GetSpeed().x > 0 && deltaX < -Radius || block.GetSpeed().x < 0 && deltaX > Radius)
                 {
                     block.ReverseHorizontalSpeed();
                 }
 
-                if (block.GetSpeed().x < 0 && deltaX > Radius)
+                if (block.GetSpeed().y < 0 && deltaY > Radius || block.GetSpeed().y > 0 && deltaY < Radius)
                 {
-                    block.ReverseHorizontalSpeed();
-                }
-
-                if (block.GetSpeed().y < 0 && deltaY > Radius)
-                {
-                    block.ReveseVerticalSpeed();
-                }
-
-                if (block.GetSpeed().y > Radius && deltaY < 0)
-                {
-                    block.ReveseVerticalSpeed();
+                    block.ReverseVerticalSpeed();
                 }
 
                 float newYSpeed = block.GetSpeed().x * tgalpha;
@@ -76,7 +63,6 @@ public class MagnitBonus : Block
             }
         }
     }
-
 
     private void OnDestroy()
     {
