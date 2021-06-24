@@ -35,13 +35,13 @@ public class SceneController : MonoBehaviour
         {
             _currentPopUp = Instantiate(_popUpWindow, transform);
             _currentPopUp.gameObject.SetActive(true);
-            Image background = _currentPopUp.GetComponentInChildren<Image>();
+            Image[] background = _currentPopUp.GetComponentsInChildren<Image>();
             Vector3 windowPos = _currentPopUp.transform.position;
             RectTransform thisRect = _currentPopUp.GetComponent<RectTransform>();
             float posY = Camera.main.transform.position.y - thisRect.rect.width;
             _startPosition = new Vector3(windowPos.x, posY, windowPos.z);
-            background.transform.position = _startPosition;
-            background.transform.DOMove(windowPos, _duration).OnComplete(() => DOTween.Kill(background.transform));
+            background[0].transform.position = _startPosition;
+            background[0].transform.DOMove(windowPos, _duration).OnComplete(() => DOTween.Kill(background[0].transform));
         }
     }
 
