@@ -6,13 +6,16 @@ public class Cutting : MonoBehaviour
     [SerializeField] private float _minCutVelocity = 0.1f;
     [SerializeField] private ScoreController _scoreController;
     [SerializeField] private BlockManager _blockManager;
-
-    private bool _isPlaying = true;
+    [SerializeField] private Player _player;
+    [SerializeField] private float _comboDelay = 0.5f;
+     private bool _isPlaying = true;
     private bool _isCutting;
     private GameObject _currentBladeTrial;
     Camera _mainCamera;
     private Vector2 _previousPosition;
     private Vector2 _defaultPosition = new Vector2(0, 0);
+
+    private float _lastCutTime;
 
     private void Start()
     {
@@ -66,6 +69,15 @@ public class Cutting : MonoBehaviour
             {
                 if (block is Fruit && block.IsNotCutted)
                 {
+                    if (Time.time - _lastCutTime <= _comboDelay)
+                    {
+                        _player.comboCount++;
+                    }
+                    else
+                    {
+                        _player.comboCount = 1;
+                    }
+                    _lastCutTime = Time.time;
                     _scoreController.AddPoint(block);
                 }
 

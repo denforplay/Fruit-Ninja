@@ -134,6 +134,7 @@ public class SpawnerManager : MonoBehaviour
     {
         _player.health = _player.maxhealth;
         _player.score = 0;
+        _player.comboCount = 0;
         _cutting.StartGame();
         _healthViewController.InstantiateHearts();
         _spawnerCoroutine = StartCoroutine(Spawn());

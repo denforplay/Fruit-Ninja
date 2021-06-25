@@ -2489,6 +2489,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5241512073747686394, guid: f87dae8caf5ef1240bd78bff81bc29b4, type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 11400000, guid: d227d8d9af404f1438b5b955b0ab83e0, type: 2}
+    - target: {fileID: 5241512073747686394, guid: f87dae8caf5ef1240bd78bff81bc29b4, type: 3}
+      propertyPath: _comboDelay
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5241512073747686394, guid: f87dae8caf5ef1240bd78bff81bc29b4, type: 3}
       propertyPath: _blockManager
       value: 
       objectReference: {fileID: 252160909}

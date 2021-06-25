@@ -34,10 +34,22 @@ public class ScoreController : MonoBehaviour
 
     public void AddPoint(Block block)
     {
-        _player.score += block.GetCost;
+        int scoreForBlock = block.GetCost;
+        if (_player.comboCount > 1)
+        {
+            scoreForBlock *= _player.comboCount;
+        }
+        _player.score += scoreForBlock;
         var scorePopUp = Instantiate(_scorePopUp);
         scorePopUp.transform.position = block.transform.position;
-        scorePopUp.text = $"{block.GetCost}";
+        if (_player.comboCount > 1)
+        {
+            scorePopUp.text = $"{block.GetCost}x{_player.comboCount}";
+        }
+        else
+        {
+            scorePopUp.text = $"{block.GetCost}";
+        }
         DOTween.ToAlpha(() => scorePopUp.color, x => scorePopUp.color = x, 0, _duration).OnComplete(() => DOTween.KillAll());
         Destroy(scorePopUp.gameObject, _duration);
         
