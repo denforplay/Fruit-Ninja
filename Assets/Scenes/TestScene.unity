@@ -2655,6 +2655,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1452816368}
     - target: {fileID: 6494585289558988525, guid: f3ba02ff576d8a84083799dc4e25b8be, type: 3}
+      propertyPath: _difficulty
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6494585289558988525, guid: f3ba02ff576d8a84083799dc4e25b8be, type: 3}
       propertyPath: _heartBonus
       value: 
       objectReference: {fileID: 7093430291794539460, guid: 620fa298ea5699947afa3514bff07c1d, type: 3}
@@ -2674,6 +2678,14 @@ PrefabInstance:
       propertyPath: _healthViewController
       value: 
       objectReference: {fileID: 1562859813}
+    - target: {fileID: 6494585289558988525, guid: f3ba02ff576d8a84083799dc4e25b8be, type: 3}
+      propertyPath: _speedConfig.speedMax
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6494585289558988525, guid: f3ba02ff576d8a84083799dc4e25b8be, type: 3}
+      propertyPath: _speedConfig.speedMin
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6494585289558988525, guid: f3ba02ff576d8a84083799dc4e25b8be, type: 3}
       propertyPath: _blocksConfig.heartBonus
       value: 
@@ -2704,7 +2716,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6494585289558988525, guid: f3ba02ff576d8a84083799dc4e25b8be, type: 3}
       propertyPath: _blocksConfig.maxBlocksPackage
-      value: 15
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6494585289558988525, guid: f3ba02ff576d8a84083799dc4e25b8be, type: 3}
       propertyPath: _blocksConfig.minBlockInterval
@@ -2716,11 +2728,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6494585289558988525, guid: f3ba02ff576d8a84083799dc4e25b8be, type: 3}
       propertyPath: _blocksConfig.maxPackageInterval
-      value: 7
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 6494585289558988525, guid: f3ba02ff576d8a84083799dc4e25b8be, type: 3}
       propertyPath: _blocksConfig.minPackageInterval
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6494585289558988525, guid: f3ba02ff576d8a84083799dc4e25b8be, type: 3}
       propertyPath: _blockChanceConfig._heartBonusChance
@@ -2784,7 +2796,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6494585289558988525, guid: f3ba02ff576d8a84083799dc4e25b8be, type: 3}
       propertyPath: _blocksConfig.bonusChances.Array.data[1]
-      value: 0.25
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 6494585289558988525, guid: f3ba02ff576d8a84083799dc4e25b8be, type: 3}
       propertyPath: _blocksConfig.bonusChances.Array.data[2]

@@ -68,14 +68,14 @@ public class SpawnerManager : MonoBehaviour
             SpawnerLine _spawnerLine = GetSpawnerLineByPriority();
             StartCoroutine(SpawnBlockPackage(_spawnerLine, numberOfBlocks));
             _difficulty++;
-            float secondsBetweenPackages = FindValueForCurrentDifficulty(_blocksConfig.maxPackageInterval, _blocksConfig.maxPackageInterval);
+            float secondsBetweenPackages = FindValueForCurrentDifficulty(_blocksConfig.minPackageInterval, _blocksConfig.maxPackageInterval);
             yield return new WaitForSeconds(secondsBetweenPackages);
         }
     }
 
     private IEnumerator SpawnBlockPackage(SpawnerLine spawnerLine, int blocksCount)
     {
-        int bonusCount = Random.Range(1, blocksCount / 2);
+        int bonusCount =blocksCount / 2;
         while (blocksCount > 0)
         {
             Block block;

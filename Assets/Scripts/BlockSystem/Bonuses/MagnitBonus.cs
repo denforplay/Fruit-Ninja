@@ -31,18 +31,18 @@ public class MagnitBonus : Block
         Vector3 magnitePosition = this.transform.position;
         foreach (var block in _blockManager.allBlocks)
         {
-            if (block != (block as MagnitBonus))
+            if (block is Fruit && block.IsNotCutted)
             {
                 Vector3 blockPosition = block.transform.position;
                 float deltaY = magnitePosition.y - blockPosition.y;
                 float deltaX = magnitePosition.x - blockPosition.x;
                 float tgalpha = deltaY / deltaX;
-                if (block.GetSpeed().x > 0 && deltaX < -Radius || block.GetSpeed().x < 0 && deltaX > Radius)
+                if (block.GetSpeed().x > 0 && deltaX < 0 || block.GetSpeed().x < 0 && deltaX > 0)
                 {
                     block.ReverseHorizontalSpeed();
                 }
 
-                if (block.GetSpeed().y < 0 && deltaY > Radius || block.GetSpeed().y > 0 && deltaY < Radius)
+                if (block.GetSpeed().y < 0 && deltaY > 0 || block.GetSpeed().y > 0 && deltaY < 0)
                 {
                     block.ReverseVerticalSpeed();
                 }
