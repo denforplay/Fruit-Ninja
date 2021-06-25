@@ -38,8 +38,9 @@ public class ScoreController : MonoBehaviour
         var scorePopUp = Instantiate(_scorePopUp);
         scorePopUp.transform.position = block.transform.position;
         scorePopUp.text = $"{block.GetCost}";
-        DOTween.ToAlpha(() => scorePopUp.color, x => scorePopUp.color = x, 0, _duration);
+        DOTween.ToAlpha(() => scorePopUp.color, x => scorePopUp.color = x, 0, _duration).OnComplete(() => DOTween.KillAll());
         Destroy(scorePopUp.gameObject, _duration);
+        
         if (_player.score >= PlayerPrefs.GetInt(_playerHighScore))
         {
             _player.maxScore = _player.score;

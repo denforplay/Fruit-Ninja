@@ -500,6 +500,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ddee6d33070d784eb3b6b1709eebfe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _spawnerManager: {fileID: 0}
   _fader: {fileID: 659822891}
   _duration: 2
 --- !u!4 &818335919
@@ -624,6 +625,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _scoreText: {fileID: 1222521970}
   _player: {fileID: 11400000, guid: d227d8d9af404f1438b5b955b0ab83e0, type: 2}
+  _pointsToAdd: 0
+  _scorePopUp: {fileID: 0}
+  _duration: 2
 --- !u!4 &1005802548
 Transform:
   m_ObjectHideFlags: 0
@@ -742,7 +746,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 38.4, y: 96.6001}
+  m_AnchoredPosition: {x: 0, y: 60}
   m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1219801100
@@ -1038,7 +1042,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -117.6001, y: 84.6001}
+  m_AnchoredPosition: {x: -125, y: 125}
   m_SizeDelta: {x: 250, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1425593960
