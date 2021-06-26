@@ -1,10 +1,13 @@
 using DG.Tweening;
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class SceneController : MonoBehaviour
 {
+    const string _yourResult = "Your result\n      {0}\nBest\n      {1}";
+    [SerializeField] private TextMeshProUGUI _playerScoreResult;
     [SerializeField] private Canvas _popUpWindow;
     [SerializeField] private Cutting _cutting;
     [SerializeField] private SpawnerManager _spawnerManager;
@@ -12,6 +15,7 @@ public class SceneController : MonoBehaviour
     [SerializeField] private ScoreController _scoreController;
     [SerializeField] private HealthViewController _healthViewController;
     [SerializeField] private float _duration = 1f;
+    [SerializeField] private Player _player;
 
     Vector3 _startPosition;
     Canvas _currentPopUp;
@@ -33,6 +37,7 @@ public class SceneController : MonoBehaviour
         _cutting.BreakGame();
         if (_blockManager.allBlocks.Count == 0)
         {
+            _playerScoreResult.text = string.Format(_yourResult, _player.score, _player.maxScore);
             _currentPopUp = Instantiate(_popUpWindow, transform);
             _currentPopUp.gameObject.SetActive(true);
             Image[] background = _currentPopUp.GetComponentsInChildren<Image>();

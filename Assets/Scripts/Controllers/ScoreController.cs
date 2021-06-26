@@ -20,6 +20,7 @@ public class ScoreController : MonoBehaviour
     [SerializeField] private float _scoreFastChange = 0.01f;
 
     private string _playerHighScore = "HighScore";
+
     public void Start()
     {
         _player.score = 0;
