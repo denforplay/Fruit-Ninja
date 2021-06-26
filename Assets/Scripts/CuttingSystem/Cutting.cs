@@ -95,9 +95,9 @@ public class Cutting : MonoBehaviour
 
     public void StopCutting()
     {
+        Destroy(_currentBladeTrial);
         _isCutting = false;
         _previousPosition = _defaultPosition;
-        Destroy(_currentBladeTrial);
     }
 
     public void StartGame()

@@ -82,7 +82,7 @@ public class SpawnerManager : MonoBehaviour
             float bonusRandom = Random.Range(0f, 1f);
             int bonusRandomIndex = Random.Range(0, _blocksConfig.bonusBlocks.Count);
             Block randomBonus = _blocksConfig.bonusBlocks[bonusRandomIndex];
-            if (bonusRandom <= _blocksConfig.bonusChances[bonusRandomIndex] && bonusCount > 0)
+            if (bonusRandom >= 0 && bonusRandom <= _blocksConfig.bonusChances[bonusRandomIndex] && bonusCount > 0)
             {
                 if (randomBonus != (randomBonus as HeartBonus))
                 {

@@ -2716,7 +2716,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6494585289558988525, guid: f3ba02ff576d8a84083799dc4e25b8be, type: 3}
       propertyPath: _blocksConfig.maxBlocksPackage
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6494585289558988525, guid: f3ba02ff576d8a84083799dc4e25b8be, type: 3}
       propertyPath: _blocksConfig.minBlockInterval
@@ -2724,15 +2724,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6494585289558988525, guid: f3ba02ff576d8a84083799dc4e25b8be, type: 3}
       propertyPath: _blocksConfig.minBlocksPackage
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6494585289558988525, guid: f3ba02ff576d8a84083799dc4e25b8be, type: 3}
       propertyPath: _blocksConfig.maxPackageInterval
-      value: 12
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6494585289558988525, guid: f3ba02ff576d8a84083799dc4e25b8be, type: 3}
       propertyPath: _blocksConfig.minPackageInterval
-      value: 3
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 6494585289558988525, guid: f3ba02ff576d8a84083799dc4e25b8be, type: 3}
       propertyPath: _blockChanceConfig._heartBonusChance
@@ -2792,7 +2792,7 @@ PrefabInstance:
       objectReference: {fileID: 6392509836594583175, guid: b90aa407b84b1a3429518e785dc42c46, type: 3}
     - target: {fileID: 6494585289558988525, guid: f3ba02ff576d8a84083799dc4e25b8be, type: 3}
       propertyPath: _blocksConfig.bonusChances.Array.data[0]
-      value: 0.25
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6494585289558988525, guid: f3ba02ff576d8a84083799dc4e25b8be, type: 3}
       propertyPath: _blocksConfig.bonusChances.Array.data[1]
@@ -2800,11 +2800,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6494585289558988525, guid: f3ba02ff576d8a84083799dc4e25b8be, type: 3}
       propertyPath: _blocksConfig.bonusChances.Array.data[2]
-      value: 0.25
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6494585289558988525, guid: f3ba02ff576d8a84083799dc4e25b8be, type: 3}
       propertyPath: _blocksConfig.bonusChances.Array.data[3]
-      value: 0.25
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6494585289558988526, guid: f3ba02ff576d8a84083799dc4e25b8be, type: 3}
       propertyPath: m_Name

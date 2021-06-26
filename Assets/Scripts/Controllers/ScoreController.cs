@@ -3,6 +3,8 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
 using UnityEngine.UI;
+using System.Threading.Tasks;
+using System.Collections;
 
 public class ScoreController : MonoBehaviour
 {
@@ -15,6 +17,7 @@ public class ScoreController : MonoBehaviour
     [SerializeField] private int _pointsToAdd;
     [SerializeField] private TextMesh _scorePopUp;
     [SerializeField] private float _duration = 2.0f;
+    [SerializeField] private float _scoreFastChange = 0.01f;
 
     private string _playerHighScore = "HighScore";
     public void Start()
@@ -39,7 +42,9 @@ public class ScoreController : MonoBehaviour
         {
             scoreForBlock *= _player.comboCount;
         }
-        _player.score += scoreForBlock;
+
+        StartCoroutine(AnimateScore(scoreForBlock));
+           
         var scorePopUp = Instantiate(_scorePopUp);
         scorePopUp.transform.position = block.transform.position;
         if (_player.comboCount > 1)
@@ -53,12 +58,25 @@ public class ScoreController : MonoBehaviour
         DOTween.ToAlpha(() => scorePopUp.color, x => scorePopUp.color = x, 0, _duration).OnComplete(() => DOTween.KillAll());
         Destroy(scorePopUp.gameObject, _duration);
         
-        if (_player.score >= PlayerPrefs.GetInt(_playerHighScore))
-        {
-            _player.maxScore = _player.score;
-            PlayerPrefs.SetInt(_playerHighScore, _player.maxScore);
-        }
+       
 
-        _scoreText.text = $"<sprite=0>{_player.score}\nBest:{_player.maxScore}";
+       
+    }
+
+    private IEnumerator AnimateScore(int scoreForBlock)
+    {
+        while (scoreForBlock > 0)
+        {
+
+            scoreForBlock--;
+            _player.score++;
+            if (_player.score >= PlayerPrefs.GetInt(_playerHighScore))
+            {
+                _player.maxScore = _player.score;
+                PlayerPrefs.SetInt(_playerHighScore, _player.maxScore);
+            }
+            _scoreText.text = $"<sprite=0>{_player.score}\nBest:{_player.maxScore}";
+            yield return new WaitForSeconds(_scoreFastChange);
+        }
     }
 }
