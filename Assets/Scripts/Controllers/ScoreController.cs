@@ -58,10 +58,6 @@ public class ScoreController : MonoBehaviour
         }
         DOTween.ToAlpha(() => scorePopUp.color, x => scorePopUp.color = x, 0, _duration).OnComplete(() => DOTween.KillAll());
         Destroy(scorePopUp.gameObject, _duration);
-        
-       
-
-       
     }
 
     private IEnumerator AnimateScore(int scoreForBlock)

@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PhysicObject : MonoBehaviour
 {
+    [SerializeField] private float _distanceFromTop = 1.5f;
     [SerializeField] private float _gravityScale;
     private Vector3 _gravityAcceleration;
     private Vector3 _speed;
@@ -21,7 +22,7 @@ public class PhysicObject : MonoBehaviour
 
     private void MoveObject()
     {
-        while (transform.position.y >= _topCameraPoint && _speed.y > 0)
+        while (transform.position.y + _distanceFromTop >= _topCameraPoint && _speed.y > 0)
         {
             if (_gravityAcceleration.y == 0)
             {

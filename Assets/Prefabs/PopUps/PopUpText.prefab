@@ -90,9 +90,9 @@ TextMesh:
   m_Alignment: 0
   m_TabSize: 4
   m_FontSize: 40
-  m_FontStyle: 0
+  m_FontStyle: 1
   m_RichText: 1
   m_Font: {fileID: 12800000, guid: 97cc9128df32d8246993f1425b064f33, type: 3}
   m_Color:
     serializedVersion: 2
-    rgba: 4278255407
+    rgba: 4278255392
